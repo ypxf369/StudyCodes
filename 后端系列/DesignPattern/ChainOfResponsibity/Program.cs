@@ -17,7 +17,7 @@ namespace ChainOfResponsibity
             handlerB.NextHandler = handlerC;
 
             handlerA.ProcessRequest(requestC);
-            Console.ReadKey();
+            Console.ReadKey(); 
         }
     }
 }

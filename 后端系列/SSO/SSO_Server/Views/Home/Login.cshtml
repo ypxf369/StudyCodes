@@ -1,0 +1,31 @@
+﻿@{
+    ViewData["Title"] = "登录";
+}
+
+<div>
+    用户名:<input id="username" type="text" />
+    密码:<input id="password" type="text" />
+    <button id="btnLogin" type="button">登录</button>
+</div>
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script type="text/javascript">
+    $(function() {
+        $("#btnLogin").click(function() {
+            var username = $("#username").val();
+            var password = $("#password").val();
+            $.ajax({
+            url:"/Home/Login",
+            type:"post",
+            data:{name:username,password:password,backUrl:queryString("backUrl")},
+            success:function(url) {
+                window.location = url;
+            }
+        });
+        });
+    });
+    function queryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return unescape(r[2]); return null;
+    }
+</script>
