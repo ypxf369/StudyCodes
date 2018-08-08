@@ -5,6 +5,10 @@ VisualStudioVersion = 15.0.27703.2047
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Topshelf_Framework", "Topshelf_Framework\Topshelf_Framework.csproj", "{074A1421-C0FD-4FBE-8D05-6A0D4AF6594D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Topshelf_Core", "Topshelf_Core\Topshelf_Core.csproj", "{172626BC-E4D5-4E7B-9E05-082BCB8004CA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Topshelf_Core_Quartz", "Topshelf_Core_Quartz\Topshelf_Core_Quartz.csproj", "{340EE85E-F69C-4B6C-A499-F2DC0D9E822C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{074A1421-C0FD-4FBE-8D05-6A0D4AF6594D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{074A1421-C0FD-4FBE-8D05-6A0D4AF6594D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{074A1421-C0FD-4FBE-8D05-6A0D4AF6594D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{172626BC-E4D5-4E7B-9E05-082BCB8004CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{172626BC-E4D5-4E7B-9E05-082BCB8004CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{172626BC-E4D5-4E7B-9E05-082BCB8004CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{172626BC-E4D5-4E7B-9E05-082BCB8004CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{340EE85E-F69C-4B6C-A499-F2DC0D9E822C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{340EE85E-F69C-4B6C-A499-F2DC0D9E822C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{340EE85E-F69C-4B6C-A499-F2DC0D9E822C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{340EE85E-F69C-4B6C-A499-F2DC0D9E822C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
