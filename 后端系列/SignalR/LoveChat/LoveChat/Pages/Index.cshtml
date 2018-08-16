@@ -1,0 +1,26 @@
+﻿@page
+<div class="container">
+    <div class="row">&nbsp;</div>
+    <div class="row">
+        <div class="col-6">&nbsp;</div>
+        <div class="col-6">
+            名称...<input type="text" id="userInput" />
+            <br />
+            消息...<input type="text" placeholder="请输入消息内容..." id="messageInput" />
+            <input type="button" id="sendButton" value="发送" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <hr />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">&nbsp;</div>
+        <div class="col-6" style="width: 400px; height: 500px; border: 1px solid #fa8072;overflow:auto;">
+            <ul id="messagesList"></ul>
+        </div>
+    </div>
+</div>
+<script src="~/lib/signalr/signalr.js"></script>
+<script src="~/js/chat.js"></script>
