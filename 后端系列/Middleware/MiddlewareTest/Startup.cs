@@ -30,6 +30,12 @@ namespace MiddlewareTest
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+            //services.AddSimpleMiddleware();
+            services.AddSimpleMiddleware(options =>
+            {
+                options.Name = "姓名";
+                options.Value = "yepeng";
+            });
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
@@ -49,10 +55,17 @@ namespace MiddlewareTest
             app.UseStaticFiles();
             app.UseCookiePolicy();
 
+            //app.UseSimpleMiddleware(options =>
+            //{
+            //    options.Name = "姓名";
+            //    options.Value = "yepeng";
+            //});
+
+            //app.UseSimpleMiddleware();
             app.UseSimpleMiddleware(options =>
             {
-                options.Name = "姓名";
-                options.Value = "yepeng";
+                options.Endpoint = "/test.json";
+                options.Name = "Map test yepeng";
             });
 
             app.UseMvc(routes =>
