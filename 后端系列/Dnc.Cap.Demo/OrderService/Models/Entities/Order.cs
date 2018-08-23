@@ -14,7 +14,7 @@ namespace OrderService.Models.Entities
         public string ID { get; set; }
 
         [Column("OrderTime")]
-        public DateTime OrderTime { get; set; }
+        public DateTime OrderTime { get; set; } = DateTime.Now;
 
         [Column("OrderUserID")]
         public string OrderUserID { get; set; }

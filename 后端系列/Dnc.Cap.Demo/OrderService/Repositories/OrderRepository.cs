@@ -22,6 +22,7 @@ namespace OrderService.Repositories
             DbContext = dbContext;
             CapPublisher = capPublisher;
             ConnStr = connStr;
+            //DbContext.Orders.ToList();
         }
 
         public async Task<bool> CreateOrderByDapperAsync(IOrder order)

@@ -20,7 +20,7 @@ namespace DeliveryService.Models.Entities
         public string OrderUserID { get; set; }
 
         [Column("CreatedTime")]
-        public DateTime CreatedTime { get; set; }
+        public DateTime CreatedTime { get; set; } = DateTime.Now;
 
         [Column("UpdatedTime")]
         public DateTime UpdatedTime { get; set; }

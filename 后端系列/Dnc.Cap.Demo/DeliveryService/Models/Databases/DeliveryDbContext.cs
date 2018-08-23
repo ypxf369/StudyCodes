@@ -9,11 +9,15 @@ namespace DeliveryService.Models.Databases
 {
     public class DeliveryDbContext : DbContext
     {
-        public DeliveryDbContext(DbContextOptions options) : base(options)
+        public string ConnStr { get; set; }
+        public DeliveryDbContext(DbContextOptions options, string connStr) : base(options)
         {
-
+            ConnStr = connStr;
         }
-
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseSqlServer(ConnStr);
+        }
         public DbSet<Delivery> Deliveries { get; set; }
     }
 }

@@ -23,7 +23,8 @@ namespace OrderService.Controllers
         [HttpPost]
         public async Task<string> Post([FromBody]OrderDto orderDto)
         {
-            var result = await _orderRepository.CreateOrderByEfAsync(orderDto);
+
+            var result = await _orderRepository.CreateOrderByDapperAsync(orderDto);
             return result ? "Post Order Success" : "Post Order Fail";
         }
     }
