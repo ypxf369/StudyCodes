@@ -40,7 +40,10 @@ namespace OrderService
             //CAP
             services.AddCap(i =>
             {
-                i.UseEntityFramework<OrderDbContext>(); //EF
+                i.UseEntityFramework<OrderDbContext>(efOptions =>
+                {
+                    efOptions.Schema = "SQL Server";
+                }); //EF
                 i.UseSqlServer(Configuration["DB:OrderDB"]); //SQLServer
                 i.UseRabbitMQ(cfg =>
                 {

@@ -30,15 +30,15 @@ namespace DeliveryService.Services
         {
             using (var conn = new SqlConnection(_connStr))
             {
-                string sql = @"INSERT INTO [dbo].[Deliveries] (DeliveryID, OrderID, ProductID, OrderUserID, CreatedTime)
-                                                            VALUES (@DeliveryID, @OrderID, @ProductID, @OrderUserID, @CreatedTime)";
+                string sql = @"INSERT INTO [dbo].[Deliveries] (DeliveryID, OrderID, OrderUserID, CreatedTime,UpdatedTime)
+                                                            VALUES (@DeliveryID, @OrderID, @OrderUserID, @CreatedTime,@UpdatedTime)";
                 int count = await conn.ExecuteAsync(sql, new
                 {
                     DeliveryID = Guid.NewGuid().ToString(),
                     OrderID = order.ID,
                     OrderUserID = order.OrderUserID,
-                    ProductID = order.ProductID,
-                    CreatedTime = DateTime.Now
+                    CreatedTime = DateTime.Now,
+                    UpdatedTime = DateTime.Now
                 });
                 return count > 0;
             }

@@ -46,7 +46,7 @@ namespace DeliveryService
                 i.UseRabbitMQ(cfg =>
                 {
                     cfg.HostName = Configuration["MQ:Host"];
-                    cfg.VirtualHost = Configuration["MQ:VirtualHost"];
+                    //cfg.VirtualHost = Configuration["MQ:VirtualHost"];
                     cfg.Port = Convert.ToInt32(Configuration["MQ:Port"]);
                     cfg.UserName = Configuration["MQ:UserName"];
                     cfg.Password = Configuration["MQ:Password"];
