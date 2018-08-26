@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using CapService1.Subscribe;
-using DotNetCore.CAP.Models;
+using Demo2OrderService.Service;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -12,7 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
-namespace CapService1
+namespace Demo2OrderService
 {
     public class Startup
     {
@@ -28,20 +27,16 @@ namespace CapService1
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
-            services.AddDbContext<Service1DbContext>();
-            //要想实现消息的订阅处理，必须在这里进行依赖注入
-            services.AddScoped<IService1Subscribe, Service1Subscribe>();
+            services.AddDbContext<OrderDbContext>();
+            //要想实现消息的发布订阅订阅处理，必须在这里进行依赖注入
+            services.AddScoped<IOrderService, OrderService>();
             services.AddCap(options =>
             {
-                options.UseEntityFramework<Service1DbContext>(efOptions =>
+                options.UseEntityFramework<OrderDbContext>(efOptions =>
                 {
-                    efOptions.Schema = "Cap";//表名前缀 默认 Cap
+                    efOptions.Schema = "Order";//表名前缀 默认 Cap
                 });
 
-                //当使用Dapper或者Ado.Net时得配置Use数据库选项,当使用EF时不用指定下面的选项
-                //options.UseSqlServer(Configuration["DB:ConnectionString"]);
-
-                //options.UseRabbitMQ("localhost");
                 options.UseRabbitMQ(mqOptions =>
                 {
                     mqOptions.HostName = "127.0.0.1"; //默认localhost
@@ -49,11 +44,11 @@ namespace CapService1
                     mqOptions.Password = "guest"; //密码 默认：guest
                     //mqOptions.VirtualHost = "test";//虚拟主机 默认：/
                     mqOptions.Port = 5672; //端口号 默认：-1
-                    mqOptions.ExchangeName = "cap.default.topic"; //CAP默认Exchange名称 默认：cap.default.topic
+                    mqOptions.ExchangeName = "cap.order.topic"; //CAP默认Exchange名称 默认：cap.default.topic
                     mqOptions.RequestedConnectionTimeout = 30000; //RabbitMQ连接超时时间 默认：30000毫秒
                     mqOptions.SocketReadTimeout = 30000; //RabbitMQ读取超时时间 默认：30000
                     mqOptions.SocketWriteTimeout = 30000; //RabbitMQ写入超时时间 默认：30000
-                    mqOptions.QueueMessageExpires = 10; //队列中消息自动删除时间 默认：10天
+                    mqOptions.QueueMessageExpires = 3; //队列中消息自动删除时间 默认：10天
                 });
 
                 options.UseDashboard();//启用仪表盘
@@ -77,18 +72,16 @@ namespace CapService1
                 //};
 
                 //失败重试间隔时间 默认值：60秒
-                //options.FailedRetryInterval = 60;
+                options.FailedRetryInterval = 30;
 
                 //失败最大重试次数 默认值：50次
-                //options.FailedRetryCount = 50;
+                options.FailedRetryCount = 50;
 
             });
+
+            services.AddHttpClient();
         }
 
-        public void Test(MessageType my, string name, string content)
-        {
-            
-        }
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
