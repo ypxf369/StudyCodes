@@ -19,6 +19,7 @@ namespace Demo2OrderService.Controllers
         {
             _orderService = orderService;
         }
+        [HttpPost("addOrder")]
         public async Task<IActionResult> AddOrder(AddOrderModel model)
         {
             await _orderService.AddOrderAsync(model.UserId, model.ProductIds);

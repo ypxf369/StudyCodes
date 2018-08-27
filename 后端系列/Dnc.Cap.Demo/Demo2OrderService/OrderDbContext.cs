@@ -27,7 +27,7 @@ namespace Demo2OrderService
                 optionsBuilder.UseSqlServer(_configuration["DB:ConnectionString"]);
             }
         }
-        
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -38,7 +38,7 @@ namespace Demo2OrderService
                 i.HasKey(p => p.Id);
                 i.Property(p => p.CreateTime).IsRequired();
                 i.Property(p => p.Creator).HasMaxLength(50).IsRequired();
-                i.Property(p => p.UpdateTime);
+                i.Property(p => p.UpdateTime).IsRequired(false);
                 i.Property(p => p.IsDeleted).IsRequired();
                 i.Property(p => p.PayStatus).IsRequired();
                 i.Property(p => p.TotalPrices).IsRequired();
@@ -50,13 +50,13 @@ namespace Demo2OrderService
                 i.HasKey(p => p.Id);
                 i.Property(p => p.CreateTime).IsRequired();
                 i.Property(p => p.Creator).HasMaxLength(50).IsRequired();
-                i.Property(p => p.UpdateTime);
+                i.Property(p => p.UpdateTime).IsRequired(false);
                 i.Property(p => p.IsDeleted).IsRequired();
                 i.HasOne(p => p.Product).WithMany().HasForeignKey(k => k.ProductId).IsRequired();
-                i.HasOne(p => p.Order).WithMany().HasForeignKey(k => k.OrderId).IsRequired();
+                i.HasOne(p => p.Ordera).WithMany().HasForeignKey(k => k.OrderId).IsRequired();
             });
         }
-        
+
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderProduct> OrderProducts { get; set; }
     }

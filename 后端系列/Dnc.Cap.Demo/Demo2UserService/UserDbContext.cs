@@ -6,13 +6,13 @@ using Entity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
-namespace Demo2WarehouseService
+namespace Demo2UserService
 {
-    public class WarehouseDbContext : DbContext
+    public class UserDbContext : DbContext
     {
         private readonly IConfiguration _configuration;
 
-        public WarehouseDbContext(IConfiguration configuration)
+        public UserDbContext(IConfiguration configuration)
         {
             _configuration = configuration;
         }
@@ -28,31 +28,21 @@ namespace Demo2WarehouseService
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            modelBuilder.Entity<Warehouse>(i =>
+            modelBuilder.Entity<User>(i =>
             {
-                i.ToTable("Warehouses");
+                i.ToTable("Users");
                 i.HasKey(p => p.Id);
                 i.Property(p => p.CreateTime).IsRequired();
                 i.Property(p => p.Creator).HasMaxLength(50).IsRequired();
                 i.Property(p => p.UpdateTime).IsRequired(false);
                 i.Property(p => p.IsDeleted).IsRequired();
-                i.Property(p => p.StoreNum).IsRequired();
-                i.HasOne(m => m.Product).WithMany().HasForeignKey(k => k.ProductId).IsRequired();
-            });
-            modelBuilder.Entity<Product>(i =>
-            {
-                i.ToTable("Products");
-                i.HasKey(p => p.Id);
-                i.Property(p => p.CreateTime).IsRequired();
-                i.Property(p => p.Creator).HasMaxLength(50).IsRequired();
-                i.Property(p => p.UpdateTime).IsRequired(false);
-                i.Property(p => p.IsDeleted).IsRequired();
-                i.Property(p => p.Name).HasMaxLength(50).IsRequired();
-                i.Property(p => p.Price).IsRequired();
+                i.Property(p => p.UserName).HasMaxLength(50).IsRequired();
+                i.Property(p => p.Balance).IsRequired();
+                i.Property(p => p.Mobile).HasMaxLength(20).IsRequired();
+                i.Property(p => p.Address).HasMaxLength(100).IsRequired();
             });
         }
 
-        public DbSet<Warehouse> Warehouses { get; set; }
-        public DbSet<Product> Products { get; set; }
+        public DbSet<User> Users { get; set; }
     }
 }

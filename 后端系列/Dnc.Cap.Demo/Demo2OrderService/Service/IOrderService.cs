@@ -15,5 +15,7 @@ namespace Demo2OrderService.Service
         /// <param name="productIds"></param>
         /// <returns></returns>
         Task<Guid> AddOrderAsync(Guid userId,IEnumerable<Guid> productIds);
+
+        Task UpdateOrderPayStatusAsync(Guid orderId);
     }
 }

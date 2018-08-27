@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Demo2OrderService.Service;
+using Demo2UserService.Service;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -11,7 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
-namespace Demo2OrderService
+namespace Demo2UserService
 {
     public class Startup
     {
@@ -27,14 +27,14 @@ namespace Demo2OrderService
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
-            services.AddDbContext<OrderDbContext>();
+            services.AddDbContext<UserDbContext>();
             //要想实现消息的发布订阅订阅处理，必须在这里进行依赖注入
-            services.AddScoped<IOrderService, OrderService>();
+            services.AddScoped<IUserService, UserService>();
             services.AddCap(options =>
             {
-                options.UseEntityFramework<OrderDbContext>(efOptions =>
+                options.UseEntityFramework<UserDbContext>(efOptions =>
                 {
-                    efOptions.Schema = "Orderas";//表名前缀 默认 Cap
+                    efOptions.Schema = "User";//表名前缀 默认 Cap
                 });
 
                 options.UseRabbitMQ(mqOptions =>
@@ -44,7 +44,7 @@ namespace Demo2OrderService
                     mqOptions.Password = "guest"; //密码 默认：guest
                     //mqOptions.VirtualHost = "test";//虚拟主机 默认：/
                     mqOptions.Port = 5672; //端口号 默认：-1
-                    mqOptions.ExchangeName = "cap.order.topic"; //CAP默认Exchange名称 默认：cap.default.topic
+                    mqOptions.ExchangeName = "cap.user.topic"; //CAP默认Exchange名称 默认：cap.default.topic
                     mqOptions.RequestedConnectionTimeout = 30000; //RabbitMQ连接超时时间 默认：30000毫秒
                     mqOptions.SocketReadTimeout = 30000; //RabbitMQ读取超时时间 默认：30000
                     mqOptions.SocketWriteTimeout = 30000; //RabbitMQ写入超时时间 默认：30000
@@ -78,8 +78,6 @@ namespace Demo2OrderService
                 options.FailedRetryCount = 50;
 
             });
-
-            services.AddHttpClient();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -16,9 +16,13 @@ namespace Demo2WarehouseService.Controllers
         public WarehouseController(IProductService productService)
         {
             _productService = productService;
-            _productService.InitDataAsync().Wait();
         }
 
+        [HttpGet("initData")]
+        public async Task InitData()
+        {
+            await _productService.InitDataAsync();
+        }
         [HttpGet("getTotalPrice")]
         public async Task<decimal> GetProductsTotalPrice(string productIds)
         {

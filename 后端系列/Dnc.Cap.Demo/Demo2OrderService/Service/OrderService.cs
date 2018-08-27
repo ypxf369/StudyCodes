@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Demo2OrderService.Service
 {
-    public class OrderService : IOrderService
+    public class OrderService : IOrderService, ICapSubscribe
     {
         private readonly ICapPublisher _publisher;
         private readonly OrderDbContext _dbContext;
@@ -59,11 +59,35 @@ namespace Demo2OrderService.Service
 
                 await _dbContext.SaveChangesAsync();
 
-                //发布消息
-                await _publisher.PublishAsync(Constants.AddOrder, order);
+                //下单成功，发布消息
+                var parameters = new PlaceOrderPushlishParams
+                {
+                    UserId = userId,
+                    OrderId = order.Id,
+                    TotalPrice = order.TotalPrices,
+                    ProductIds = productIds
+                };
+                await _publisher.PublishAsync(Constants.AddOrder, parameters, Constants.UserPaymentSuccess);
                 trans.Commit();
                 return order.Id;
             }
+        }
+
+        /// <summary>
+        /// 更新订单支付状态
+        /// </summary>
+        /// <param name="orderId"></param>
+        /// <returns></returns>
+        [CapSubscribe(Constants.UserPaymentSuccess)]
+        public async Task UpdateOrderPayStatusAsync(Guid orderId)
+        {
+            if (orderId == Guid.Empty)
+            {
+                throw new ArgumentException(nameof(orderId) + "为空");
+            }
+            var order = await _dbContext.Orders.FindAsync(orderId);
+            order.PayStatus = true;
+            await _dbContext.SaveChangesAsync();
         }
     }
 }

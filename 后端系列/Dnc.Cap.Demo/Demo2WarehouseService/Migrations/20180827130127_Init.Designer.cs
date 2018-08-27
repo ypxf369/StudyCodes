@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Demo2WarehouseService.Migrations
 {
     [DbContext(typeof(WarehouseDbContext))]
-    [Migration("20180826150829_Init")]
+    [Migration("20180827130127_Init")]
     partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -40,7 +40,7 @@ namespace Demo2WarehouseService.Migrations
 
                     b.Property<decimal>("Price");
 
-                    b.Property<DateTime>("UpdateTime");
+                    b.Property<DateTime?>("UpdateTime");
 
                     b.HasKey("Id");
 
@@ -64,7 +64,7 @@ namespace Demo2WarehouseService.Migrations
 
                     b.Property<int>("StoreNum");
 
-                    b.Property<DateTime>("UpdateTime");
+                    b.Property<DateTime?>("UpdateTime");
 
                     b.HasKey("Id");
 

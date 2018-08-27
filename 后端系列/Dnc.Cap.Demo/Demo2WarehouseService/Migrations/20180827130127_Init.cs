@@ -14,7 +14,7 @@ namespace Demo2WarehouseService.Migrations
                     Id = table.Column<Guid>(nullable: false),
                     Creator = table.Column<string>(maxLength: 50, nullable: false),
                     CreateTime = table.Column<DateTime>(nullable: false),
-                    UpdateTime = table.Column<DateTime>(nullable: false),
+                    UpdateTime = table.Column<DateTime>(nullable: true),
                     IsDeleted = table.Column<bool>(nullable: false),
                     Name = table.Column<string>(maxLength: 50, nullable: false),
                     Price = table.Column<decimal>(nullable: false)
@@ -31,7 +31,7 @@ namespace Demo2WarehouseService.Migrations
                     Id = table.Column<Guid>(nullable: false),
                     Creator = table.Column<string>(maxLength: 50, nullable: false),
                     CreateTime = table.Column<DateTime>(nullable: false),
-                    UpdateTime = table.Column<DateTime>(nullable: false),
+                    UpdateTime = table.Column<DateTime>(nullable: true),
                     IsDeleted = table.Column<bool>(nullable: false),
                     ProductId = table.Column<Guid>(nullable: false),
                     StoreNum = table.Column<int>(nullable: false)
@@ -39,12 +39,6 @@ namespace Demo2WarehouseService.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Warehouses", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Warehouses_Products_ProductId",
-                        column: x => x.ProductId,
-                        principalTable: "Products",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(

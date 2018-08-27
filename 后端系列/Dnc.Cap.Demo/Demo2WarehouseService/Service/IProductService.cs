@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Entity;
 
 namespace Demo2WarehouseService.Service
 {
@@ -9,5 +10,6 @@ namespace Demo2WarehouseService.Service
     {
         Task InitDataAsync();
         Task<decimal> CalcProductTotalPriceAsync(IEnumerable<Guid> productIds);
+        Task UpdateProductStoreNumAsync(PlaceOrderPushlishParams parameters);
     }
 }

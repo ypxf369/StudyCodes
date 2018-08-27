@@ -38,7 +38,7 @@ namespace Demo2WarehouseService.Migrations
 
                     b.Property<decimal>("Price");
 
-                    b.Property<DateTime>("UpdateTime");
+                    b.Property<DateTime?>("UpdateTime");
 
                     b.HasKey("Id");
 
@@ -62,7 +62,7 @@ namespace Demo2WarehouseService.Migrations
 
                     b.Property<int>("StoreNum");
 
-                    b.Property<DateTime>("UpdateTime");
+                    b.Property<DateTime?>("UpdateTime");
 
                     b.HasKey("Id");
 
