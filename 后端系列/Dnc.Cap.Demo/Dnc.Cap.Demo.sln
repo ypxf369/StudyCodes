@@ -13,17 +13,17 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DeliveryService", "Delivery
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Demo1", "Demo1", "{A5DEAA0C-0D75-4240-890D-E88598572AC9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CapService1", "CapService1\CapService1.csproj", "{850B3979-850D-44F8-9E5B-F0FB0425280C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CapService1", "CapService1\CapService1.csproj", "{850B3979-850D-44F8-9E5B-F0FB0425280C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{12123E06-338A-49DD-B376-71A7B5D27939}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common", "Common\Common.csproj", "{12123E06-338A-49DD-B376-71A7B5D27939}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Demo2", "Demo2", "{FEA14BF3-2E9A-4ED3-86D9-0C45FA47EFC0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entity", "Entity\Entity.csproj", "{053DC9BC-205F-40D7-A096-474AC28A6D89}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Entity", "Entity\Entity.csproj", "{053DC9BC-205F-40D7-A096-474AC28A6D89}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo2OrderService", "Demo2OrderService\Demo2OrderService.csproj", "{C813F2AC-73AF-4E9A-AA95-3B33699E3330}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Demo2OrderService", "Demo2OrderService\Demo2OrderService.csproj", "{C813F2AC-73AF-4E9A-AA95-3B33699E3330}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo2WarehouseService", "Demo2WarehouseService\Demo2WarehouseService.csproj", "{64D0ABE0-85F1-4528-A7C4-80D911655BE4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Demo2WarehouseService", "Demo2WarehouseService\Demo2WarehouseService.csproj", "{64D0ABE0-85F1-4528-A7C4-80D911655BE4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

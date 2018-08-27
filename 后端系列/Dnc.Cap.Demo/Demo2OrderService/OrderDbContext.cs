@@ -4,6 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Entity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
+using Microsoft.EntityFrameworkCore.Migrations.Operations;
 using Microsoft.Extensions.Configuration;
 
 namespace Demo2OrderService
@@ -18,6 +21,7 @@ namespace Demo2OrderService
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+
             if (!optionsBuilder.IsConfigured)
             {
                 optionsBuilder.UseSqlServer(_configuration["DB:ConnectionString"]);
@@ -27,6 +31,7 @@ namespace Demo2OrderService
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
             modelBuilder.Entity<Order>(i =>
             {
                 i.ToTable("Orders");
