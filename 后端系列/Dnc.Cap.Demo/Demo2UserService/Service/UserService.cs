@@ -50,8 +50,9 @@ namespace Demo2UserService.Service
                 await _publisher.PublishAsync(Constants.UserPayment, parameters);
 
                 //支付成功，更新订单支付状态为“已支付”,通过mq回调方法
-                return parameters.OrderId;
+                trans.Commit();
             }
+            return parameters.OrderId;
         }
     }
 }

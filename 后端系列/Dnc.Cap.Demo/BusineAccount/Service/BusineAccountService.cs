@@ -31,17 +31,17 @@ namespace Demo2BusineAccount.Service
         /// <summary>
         /// 用户支付后企业账户加款
         /// </summary>
-        /// <param name="amount"></param>
+        /// <param name="parameters"></param>
         /// <returns></returns>
         [CapSubscribe(Constants.UserPayment)]
-        public async Task AddBalanceAsync(decimal amount)
+        public async Task AddBalanceAsync(PlaceOrderPushlishParams parameters)
         {
-            if (amount == 0)
+            if (parameters == null)
             {
-                throw new ArgumentException(nameof(amount) + "为空");
+                throw new ArgumentException(nameof(parameters) + "为空");
             }
             var account = await _dbContext.BusineAccounts.FirstAsync();
-            account.Balance += amount;
+            account.Balance += parameters.TotalPrice;
             await _dbContext.SaveChangesAsync();
         }
     }

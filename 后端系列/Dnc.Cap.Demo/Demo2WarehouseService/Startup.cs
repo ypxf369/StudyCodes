@@ -44,7 +44,7 @@ namespace Demo2WarehouseService
                     mqOptions.Password = "guest"; //密码 默认：guest
                     //mqOptions.VirtualHost = "test";//虚拟主机 默认：/
                     mqOptions.Port = 5672; //端口号 默认：-1
-                    mqOptions.ExchangeName = "cap.warehouse.topic"; //CAP默认Exchange名称 默认：cap.default.topic
+                    mqOptions.ExchangeName = "cap.default.topic"; //CAP默认Exchange名称 默认：cap.default.topic
                     mqOptions.RequestedConnectionTimeout = 30000; //RabbitMQ连接超时时间 默认：30000毫秒
                     mqOptions.SocketReadTimeout = 30000; //RabbitMQ读取超时时间 默认：30000
                     mqOptions.SocketWriteTimeout = 30000; //RabbitMQ写入超时时间 默认：30000
