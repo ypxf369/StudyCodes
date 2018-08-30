@@ -1,0 +1,61 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2003
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "简单工厂模式", "简单工厂模式", "{C8C1BEE7-C583-4C7C-A47C-C4DF5F3B926C}"
+	ProjectSection(SolutionItems) = preProject
+		README.txt = README.txt
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "新手写法", "新手写法\新手写法.csproj", "{F471B8B2-5011-457A-9372-5F0FAD224569}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "规范代码", "规范代码\规范代码.csproj", "{9C272EDE-D478-40CD-A6F6-C71B64B8BE9C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "抽象——代码复用", "抽象——代码复用\抽象——代码复用.csproj", "{2490D267-D55E-43AC-8301-C6154191977C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "紧耦合VS松耦合", "紧耦合VS松耦合\紧耦合VS松耦合.csproj", "{EC1AB477-AF43-487F-84B2-1276A066216C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "简单工厂Pattern", "简单工厂Pattern\简单工厂Pattern.csproj", "{0C2039CD-A568-4DF6-A82B-AE881F4388DD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F471B8B2-5011-457A-9372-5F0FAD224569}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F471B8B2-5011-457A-9372-5F0FAD224569}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F471B8B2-5011-457A-9372-5F0FAD224569}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F471B8B2-5011-457A-9372-5F0FAD224569}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9C272EDE-D478-40CD-A6F6-C71B64B8BE9C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C272EDE-D478-40CD-A6F6-C71B64B8BE9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C272EDE-D478-40CD-A6F6-C71B64B8BE9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C272EDE-D478-40CD-A6F6-C71B64B8BE9C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2490D267-D55E-43AC-8301-C6154191977C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2490D267-D55E-43AC-8301-C6154191977C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2490D267-D55E-43AC-8301-C6154191977C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2490D267-D55E-43AC-8301-C6154191977C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC1AB477-AF43-487F-84B2-1276A066216C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC1AB477-AF43-487F-84B2-1276A066216C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC1AB477-AF43-487F-84B2-1276A066216C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC1AB477-AF43-487F-84B2-1276A066216C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0C2039CD-A568-4DF6-A82B-AE881F4388DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C2039CD-A568-4DF6-A82B-AE881F4388DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C2039CD-A568-4DF6-A82B-AE881F4388DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C2039CD-A568-4DF6-A82B-AE881F4388DD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F471B8B2-5011-457A-9372-5F0FAD224569} = {C8C1BEE7-C583-4C7C-A47C-C4DF5F3B926C}
+		{9C272EDE-D478-40CD-A6F6-C71B64B8BE9C} = {C8C1BEE7-C583-4C7C-A47C-C4DF5F3B926C}
+		{2490D267-D55E-43AC-8301-C6154191977C} = {C8C1BEE7-C583-4C7C-A47C-C4DF5F3B926C}
+		{EC1AB477-AF43-487F-84B2-1276A066216C} = {C8C1BEE7-C583-4C7C-A47C-C4DF5F3B926C}
+		{0C2039CD-A568-4DF6-A82B-AE881F4388DD} = {C8C1BEE7-C583-4C7C-A47C-C4DF5F3B926C}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9C0B0C4C-2A03-435E-8E56-1A49D1E0120B}
+	EndGlobalSection
+EndGlobal
