@@ -1,0 +1,380 @@
+.waifu-tool {
+    display:none;
+    color:#aaa;
+    top:50px;
+    right:10px;
+    font-size:14px;
+    position:absolute;
+}
+.waifu:hover .waifu-tool {
+    display:block;
+}
+.waifu-tool span {
+    display:block;
+    cursor:pointer;
+    color:#5b6c7d;
+    line-height:20px;
+    transition:0.2s;
+}
+.waifu-tool span:hover {
+    color:#34495e;
+}
+.waifu {
+    position:fixed;
+    bottom:-5px;
+    left:0;
+    z-index:999999;
+    transition:all .3s ease-in-out;
+    -webkit-transform:translateY(3px);
+    transform:translateY(3px);
+}
+.waifu:hover {
+    -webkit-transform:translateY(0);
+    transform:translateY(0);
+}
+@media (max-width:800px) {
+    .waifu {
+        display:none;
+    }
+}
+.waifu-tips {
+    opacity:0;
+    width:250px;
+    height:70px;
+    margin:-20px 20px;
+    padding:5px 10px;
+    border:1px solid rgba(224, 186, 140, 0.62);
+    border-radius:12px;
+    background-color:rgba(236, 217, 188, 0.5);
+    box-shadow:0 3px 15px 2px rgba(191, 158, 118, 0.2);
+    font-size:12px;
+    text-overflow:ellipsis;
+    overflow:hidden;
+    position:absolute;
+    animation-delay:5s;
+    animation-duration:50s;
+    animation-iteration-count:infinite;
+    animation-name:shake;
+    animation-timing-function:ease-in-out;
+}
+.waifu #live2d {
+    position:relative;
+}
+@keyframes shake {
+    2% {
+        transform:translate(0.5px, -1.5px) rotate(-0.5deg);
+    }
+    4% {
+        transform:translate(0.5px, 1.5px) rotate(1.5deg);
+    }
+    6% {
+        transform:translate(1.5px, 1.5px) rotate(1.5deg);
+    }
+    8% {
+        transform:translate(2.5px, 1.5px) rotate(0.5deg);
+    }
+    10% {
+        transform:translate(0.5px, 2.5px) rotate(0.5deg);
+    }
+    12% {
+        transform:translate(1.5px, 1.5px) rotate(0.5deg);
+    }
+    14% {
+        transform:translate(0.5px, 0.5px) rotate(0.5deg);
+    }
+    16% {
+        transform:translate(-1.5px, -0.5px) rotate(1.5deg);
+    }
+    18% {
+        transform:translate(0.5px, 0.5px) rotate(1.5deg);
+    }
+    20% {
+        transform:translate(2.5px, 2.5px) rotate(1.5deg);
+    }
+    22% {
+        transform:translate(0.5px, -1.5px) rotate(1.5deg);
+    }
+    24% {
+        transform:translate(-1.5px, 1.5px) rotate(-0.5deg);
+    }
+    26% {
+        transform:translate(1.5px, 0.5px) rotate(1.5deg);
+    }
+    28% {
+        transform:translate(-0.5px, -0.5px) rotate(-0.5deg);
+    }
+    30% {
+        transform:translate(1.5px, -0.5px) rotate(-0.5deg);
+    }
+    32% {
+        transform:translate(2.5px, -1.5px) rotate(1.5deg);
+    }
+    34% {
+        transform:translate(2.5px, 2.5px) rotate(-0.5deg);
+    }
+    36% {
+        transform:translate(0.5px, -1.5px) rotate(0.5deg);
+    }
+    38% {
+        transform:translate(2.5px, -0.5px) rotate(-0.5deg);
+    }
+    40% {
+        transform:translate(-0.5px, 2.5px) rotate(0.5deg);
+    }
+    42% {
+        transform:translate(-1.5px, 2.5px) rotate(0.5deg);
+    }
+    44% {
+        transform:translate(-1.5px, 1.5px) rotate(0.5deg);
+    }
+    46% {
+        transform:translate(1.5px, -0.5px) rotate(-0.5deg);
+    }
+    48% {
+        transform:translate(2.5px, -0.5px) rotate(0.5deg);
+    }
+    50% {
+        transform:translate(-1.5px, 1.5px) rotate(0.5deg);
+    }
+    52% {
+        transform:translate(-0.5px, 1.5px) rotate(0.5deg);
+    }
+    54% {
+        transform:translate(-1.5px, 1.5px) rotate(0.5deg);
+    }
+    56% {
+        transform:translate(0.5px, 2.5px) rotate(1.5deg);
+    }
+    58% {
+        transform:translate(2.5px, 2.5px) rotate(0.5deg);
+    }
+    60% {
+        transform:translate(2.5px, -1.5px) rotate(1.5deg);
+    }
+    62% {
+        transform:translate(-1.5px, 0.5px) rotate(1.5deg);
+    }
+    64% {
+        transform:translate(-1.5px, 1.5px) rotate(1.5deg);
+    }
+    66% {
+        transform:translate(0.5px, 2.5px) rotate(1.5deg);
+    }
+    68% {
+        transform:translate(2.5px, -1.5px) rotate(1.5deg);
+    }
+    70% {
+        transform:translate(2.5px, 2.5px) rotate(0.5deg);
+    }
+    72% {
+        transform:translate(-0.5px, -1.5px) rotate(1.5deg);
+    }
+    74% {
+        transform:translate(-1.5px, 2.5px) rotate(1.5deg);
+    }
+    76% {
+        transform:translate(-1.5px, 2.5px) rotate(1.5deg);
+    }
+    78% {
+        transform:translate(-1.5px, 2.5px) rotate(0.5deg);
+    }
+    80% {
+        transform:translate(-1.5px, 0.5px) rotate(-0.5deg);
+    }
+    82% {
+        transform:translate(-1.5px, 0.5px) rotate(-0.5deg);
+    }
+    84% {
+        transform:translate(-0.5px, 0.5px) rotate(1.5deg);
+    }
+    86% {
+        transform:translate(2.5px, 1.5px) rotate(0.5deg);
+    }
+    88% {
+        transform:translate(-1.5px, 0.5px) rotate(1.5deg);
+    }
+    90% {
+        transform:translate(-1.5px, -0.5px) rotate(-0.5deg);
+    }
+    92% {
+        transform:translate(-1.5px, -1.5px) rotate(1.5deg);
+    }
+    94% {
+        transform:translate(0.5px, 0.5px) rotate(-0.5deg);
+    }
+    96% {
+        transform:translate(2.5px, -0.5px) rotate(-0.5deg);
+    }
+    98% {
+        transform:translate(-1.5px, -1.5px) rotate(-0.5deg);
+    }
+    0%, 100% {
+        transform:translate(0, 0) rotate(0);
+    }
+}
+/*夜间模式*/
+body.night {
+    background-color:#263238;
+    color:#aaa;
+}
+body.night img {
+    filter:brightness(30%);
+}
+body.night .waifu {
+    color:#34495e;
+    filter:brightness(30%);
+}
+body.night {
+    background:#263238;
+    border:1px solid #555;
+}
+body.night .speedbar {
+    background:#263238;
+    border:1px solid #555;
+}
+body.night .social {
+    background:#263238;
+    border:0px;
+}
+body.night .widget {
+    background:#263238;
+}
+body.night .hot-posts {
+    background:#263238;
+    border:0px;
+}
+body.night .excerpt {
+    background:#263238;
+    box-shadow:0px 3px 20px -3px rgba(0, 64, 128, 0.2);
+    border:1px solid #555;
+}
+body.night .pagination {
+    background:#263238;
+    border:0px;
+}
+body.night .git_comment div.muted {
+    background:#263238;
+    border:0px #eee solid;
+}
+body.night div.muted:before {
+    border-right:9px solid #263238;
+}
+body.night .imgpost {
+    background:#263238;
+}
+body.night .widget_links li a {
+    background:#263238;
+}
+body.night .c-main:after, body.night .git_comment div.muted:after {
+    border-right:7px solid #263238;
+}
+body.night #wowslider-container1 .ws_thumbs a {
+    background-color:#263238;
+}
+body.night .archive-header {
+    background-color:#263238;
+    box-shadow:0px 3px 20px -3px rgba(0, 64, 128, 0.2);
+    border:1px solid #555;
+}
+body.night .widget_recent_entries, body.night .git_comment, body.night .widget_categories, body.night .widget_text, body.night .git_tag, body.night .widget_links {
+    border:1px solid #555;
+}
+body.night .pagination ul>li>a, body.night .pagination ul>li>span {
+    background-color:#263238;
+}
+body.night hr {
+    border-top:1px solid #444;
+}
+body.night .breadcrumbs {
+    background-color:#263238;
+    border-color:#555;
+}
+body.night .article-header {
+    background-color:#263238;
+    border-top:1px solid #555;
+    border-right:1px solid #555;
+    border-left:1px solid #555;
+    border-bottom:1px;
+}
+body.night .article-content {
+    background-color:#263238;
+    border-right:1px solid #555;
+    border-left:1px solid #555;
+    border-top:1px solid #555;
+}
+body.night .article-footer {
+    background-color:#263238;
+    border-top:1px solid #555;
+    border-right:1px solid #555;
+    border-left:1px solid #555;
+}
+body.night .article-nav {
+    background-color:#263238;
+    border:1px solid #555;
+}
+body.night .clr, body.night .related_posts {
+    background-color:#263238;
+    border:1px solid #555;
+}
+body.night .relates {
+    background-color:#263238;
+    border-top:1px solid #555;
+}
+body.night #respond, body.night #commentform textarea {
+    background-color:#263238;
+    border:1px solid #555;
+}
+body.night .comt-title {
+    background-color:#263238;
+}
+body.night #postcomments, body.night .c-main {
+    background-color:#263238;
+    border:1px solid #555;
+}
+body.night #comments {
+    border-bottom:1px solid #555;
+}
+body.night .c-main:before {
+    border-top:9px solid transparent;
+    border-right:9px solid #555;
+    border-bottom:9px solid transparent;
+}
+body.night .pageheader {
+    background-color:#263238!important;
+    border:1px solid #555;
+}
+body.night .pagesidebar {
+    background-color:#263238;
+    border:1px solid #555;
+}
+body.night .pagesider-menu a {
+    border:1px solid #555;
+}
+body.night .pagesider-menu li.active a, .pagesider-menu li.current-menu-item a, .pagesider-menu li.current_page_item a {
+    background-color:#555;
+}
+body.night .tag-clouds {
+    border:1px solid #555;
+    border-radius:8px;
+}
+body.night .fa:before {
+    color:#555;
+}
+body.night .shuoshuo {
+    background-color:#263238;
+    border:1px solid #555;
+}
+body.night .shuoshuo-content {
+    background-color:#263238;
+    border:1px solid #555;
+}
+body.night .shuoshuo:before, body.night .shuoshuo:after {
+    background:#434f55;
+}
+body.night #BadApplePlayer .player .bottom {
+    background-color:#263238;
+}
+body.night #BadApplePlayer .playlist {
+    border-top:solid #263238 1px;
+}
+/*夜间模式结束*/

@@ -1,0 +1,114 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - TPSite</title>
+</head>
+<body>
+    @*<partial name="_CookieConsentPartial" />*@
+
+    <div class="container body-content">
+
+
+    </div>
+    <div id="home">
+        <div id="header"></div>
+        <div id="main">
+            <div id="mainContent">
+                @RenderBody()
+            </div>
+            <div id="sideBar">
+                <div class="newsItem">
+                    <h3 class="catListTitle">公告</h3>
+                    <div id="blog-news">
+                        <style>
+                            #clock {
+                                font-family: 'Share Tech Mono', monospace;
+                                color: #ffffff;
+                                text-align: center;
+                                position: absolute;
+                                left: 83%;
+                                top: 45%%;
+                                margin-top: 70px;
+                                max-width: 80%;
+                                -webkit-transform: translate(-50%, -50%);
+                                transform: translate(-50%, -50%);
+                                color: #25a9da;
+                                text-shadow: 0 0 20px #0aafe6, 0 0 20px rgba(10, 175, 230, 0);
+                            }
+
+                                #clock .time {
+                                    letter-spacing: 0.05em;
+                                    font-size: 45px;
+                                    padding: 5px 0;
+                                }
+
+                                #clock .date {
+                                    letter-spacing: 0.1em;
+                                    font-size: 24px;
+                                }
+
+                                #clock .text {
+                                    letter-spacing: 0.1em;
+                                    font-size: 12px;
+                                    padding: 20px 0 0;
+                                }
+
+                            #waifu {
+                                left: 85%;
+                            }
+                        </style>
+                        <div style="border-top: 1px dashed #ccc;padding: 5px;border-bottom: 1px dashed #ccc;height: 120px;">
+                            <div id="clock">
+                                <p class="date">{{date}}</p>
+                                <p class="time">{{time}}</p>
+                            </div>
+                        </div>
+                        <embed src="//music.163.com/style/swf/widget.swf?sid=2307767639&amp;type=0&amp;auto=1&amp;width=310&amp;height=90" width="330" height="110" allownetworking="all">
+
+                        @*<a href="https://www.cnblogs.com/clwydjgs/">
+                            <img src="https://files.cnblogs.com/files/clwydjgs/touxiang.bmp">
+                        </a>*@
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr />
+        <footer>
+            <p>&copy; 2018 - TPSite</p>
+        </footer>
+    </div>
+    <!--js-->
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/vue/vue.js"></script>
+    <script type="text/javascript">
+        var clock = new Vue({
+            el: '#clock',
+            data: {
+                time: '',
+                date: ''
+            }
+        });
+
+        var week = ['星期天', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
+        var timerID = setInterval(updateTime, 1000);
+        updateTime();
+        function updateTime() {
+            var cd = new Date();
+            clock.time = zeroPadding(cd.getHours(), 2) + ':' + zeroPadding(cd.getMinutes(), 2) + ':' + zeroPadding(cd.getSeconds(), 2);
+            clock.date = zeroPadding(cd.getFullYear(), 4) + '-' + zeroPadding(cd.getMonth() + 1, 2) + '-' + zeroPadding(cd.getDate(), 2) + ' ' + week[cd.getDay()];
+        };
+
+        function zeroPadding(num, digit) {
+            var zero = '';
+            for (var i = 0; i < digit; i++) {
+                zero += '0';
+            }
+            return (zero + num).slice(-digit);
+        }
+    </script>
+    <partial name="_KanbanNiang" />
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
