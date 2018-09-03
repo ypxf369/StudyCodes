@@ -8,15 +8,26 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "简单工厂模式", "简�
 		README.txt = README.txt
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "新手写法", "新手写法\新手写法.csproj", "{F471B8B2-5011-457A-9372-5F0FAD224569}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "新手写法", "新手写法\新手写法.csproj", "{F471B8B2-5011-457A-9372-5F0FAD224569}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "规范代码", "规范代码\规范代码.csproj", "{9C272EDE-D478-40CD-A6F6-C71B64B8BE9C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "规范代码", "规范代码\规范代码.csproj", "{9C272EDE-D478-40CD-A6F6-C71B64B8BE9C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "抽象——代码复用", "抽象——代码复用\抽象——代码复用.csproj", "{2490D267-D55E-43AC-8301-C6154191977C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "抽象——代码复用", "抽象——代码复用\抽象——代码复用.csproj", "{2490D267-D55E-43AC-8301-C6154191977C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "紧耦合VS松耦合", "紧耦合VS松耦合\紧耦合VS松耦合.csproj", "{EC1AB477-AF43-487F-84B2-1276A066216C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "紧耦合VS松耦合", "紧耦合VS松耦合\紧耦合VS松耦合.csproj", "{EC1AB477-AF43-487F-84B2-1276A066216C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "简单工厂Pattern", "简单工厂Pattern\简单工厂Pattern.csproj", "{0C2039CD-A568-4DF6-A82B-AE881F4388DD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "简单工厂Pattern", "简单工厂Pattern\简单工厂Pattern.csproj", "{0C2039CD-A568-4DF6-A82B-AE881F4388DD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "装饰者模式", "装饰者模式", "{21E16165-03F4-4172-B960-7DA3A4901B3A}"
+	ProjectSection(SolutionItems) = preProject
+		README3.txt = README3.txt
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "装饰第一版", "装饰第一版\装饰第一版.csproj", "{924A75E9-29E6-43E8-8AF4-04066BFC671A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "装饰第二版", "装饰第二版\装饰第二版.csproj", "{19E12E9C-BA43-484B-9A44-A80B80E71A9F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "装饰者", "装饰者\装饰者.csproj", "{D1FB252E-326C-4203-99FB-4A7593235878}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -44,6 +55,18 @@ Global
 		{0C2039CD-A568-4DF6-A82B-AE881F4388DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0C2039CD-A568-4DF6-A82B-AE881F4388DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0C2039CD-A568-4DF6-A82B-AE881F4388DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{924A75E9-29E6-43E8-8AF4-04066BFC671A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{924A75E9-29E6-43E8-8AF4-04066BFC671A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{924A75E9-29E6-43E8-8AF4-04066BFC671A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{924A75E9-29E6-43E8-8AF4-04066BFC671A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{19E12E9C-BA43-484B-9A44-A80B80E71A9F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19E12E9C-BA43-484B-9A44-A80B80E71A9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19E12E9C-BA43-484B-9A44-A80B80E71A9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19E12E9C-BA43-484B-9A44-A80B80E71A9F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D1FB252E-326C-4203-99FB-4A7593235878}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1FB252E-326C-4203-99FB-4A7593235878}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1FB252E-326C-4203-99FB-4A7593235878}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1FB252E-326C-4203-99FB-4A7593235878}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -54,6 +77,9 @@ Global
 		{2490D267-D55E-43AC-8301-C6154191977C} = {C8C1BEE7-C583-4C7C-A47C-C4DF5F3B926C}
 		{EC1AB477-AF43-487F-84B2-1276A066216C} = {C8C1BEE7-C583-4C7C-A47C-C4DF5F3B926C}
 		{0C2039CD-A568-4DF6-A82B-AE881F4388DD} = {C8C1BEE7-C583-4C7C-A47C-C4DF5F3B926C}
+		{924A75E9-29E6-43E8-8AF4-04066BFC671A} = {21E16165-03F4-4172-B960-7DA3A4901B3A}
+		{19E12E9C-BA43-484B-9A44-A80B80E71A9F} = {21E16165-03F4-4172-B960-7DA3A4901B3A}
+		{D1FB252E-326C-4203-99FB-4A7593235878} = {21E16165-03F4-4172-B960-7DA3A4901B3A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9C0B0C4C-2A03-435E-8E56-1A49D1E0120B}
