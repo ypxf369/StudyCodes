@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="automapper" Version="7.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TPSite.Domain\TPSite.Domain.csproj" />
+    <ProjectReference Include="..\TPSite.Dto\TPSite.Dto.csproj" />
+  </ItemGroup>
+
+</Project>

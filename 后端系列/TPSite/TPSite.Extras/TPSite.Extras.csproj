@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="automapper" Version="7.0.1" />
+    <PackageReference Include="newtonsoft.json" Version="11.0.2" />
+    <PackageReference Include="stackexchange.redis" Version="1.2.6" />
+  </ItemGroup>
+
+</Project>
