@@ -10,4 +10,9 @@
     <PackageReference Include="stackexchange.redis" Version="1.2.6" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\TPSite.Domain\TPSite.Domain.csproj" />
+    <ProjectReference Include="..\TPSite.Dto\TPSite.Dto.csproj" />
+  </ItemGroup>
+
 </Project>

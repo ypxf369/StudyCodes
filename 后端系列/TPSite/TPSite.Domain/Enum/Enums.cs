@@ -20,7 +20,7 @@ namespace TPSite.Domain.Enum
         /// <summary>
         /// 登录名或是密码错误
         /// </summary>
-        [Description("登录名或是密码错误")] PassWordError = -2,
+        [Description("登录名或密码错误")] PassWordError = -2,
 
         /// <summary>
         /// 验证码错误

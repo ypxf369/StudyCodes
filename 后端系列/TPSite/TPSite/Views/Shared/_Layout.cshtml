@@ -4,16 +4,34 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - TPSite</title>
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
 </head>
 <body>
     @*<partial name="_CookieConsentPartial" />*@
 
-    <div class="container body-content">
-
-
-    </div>
     <div id="home">
-        <div id="header"></div>
+        <div id="header">
+            <div id="loginDialog">
+                <el-button type="primary" @@click="loginDialogVisible = false">登 录</el-button>
+                <el-dialog title="收货地址" :visible.sync="loginDialogVisible">
+                    <el-form :model="form">
+                        <el-form-item label="活动名称" :label-width="formLabelWidth">
+                            <el-input v-model="form.name" auto-complete="off"></el-input>
+                        </el-form-item>
+                        <el-form-item label="活动区域" :label-width="formLabelWidth">
+                            <el-select v-model="form.region" placeholder="请选择活动区域">
+                                <el-option label="区域一" value="shanghai"></el-option>
+                                <el-option label="区域二" value="beijing"></el-option>
+                            </el-select>
+                        </el-form-item>
+                    </el-form>
+                    <div slot="footer" class="dialog-footer">
+                        <el-button @@click="loginDialogVisible = false">取 消</el-button>
+                        <el-button type="primary" @@click="loginDialogVisible = false">确 定</el-button>
+                    </div>
+                </el-dialog>
+            </div>
+        </div>
         <div id="main">
             <div id="mainContent">
                 @RenderBody()
@@ -68,8 +86,8 @@
                         <embed src="//music.163.com/style/swf/widget.swf?sid=2307767639&amp;type=0&amp;auto=1&amp;width=310&amp;height=90" width="330" height="110" allownetworking="all">
 
                         @*<a href="https://www.cnblogs.com/clwydjgs/">
-                            <img src="https://files.cnblogs.com/files/clwydjgs/touxiang.bmp">
-                        </a>*@
+                                <img src="https://files.cnblogs.com/files/clwydjgs/touxiang.bmp">
+                            </a>*@
                     </div>
                 </div>
             </div>
@@ -81,7 +99,10 @@
     </div>
     <!--js-->
     <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
     <script src="~/lib/vue/vue.js"></script>
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
     <script type="text/javascript">
         var clock = new Vue({
             el: '#clock',
@@ -107,6 +128,14 @@
             }
             return (zero + num).slice(-digit);
         }
+    </script>
+    <script type="text/javascript">
+        var valid = new Vue({
+            el: "#loginDialog",
+            data: {
+                loginDialogVisible:false
+            }
+        });
     </script>
     <partial name="_KanbanNiang" />
     @RenderSection("Scripts", required: false)

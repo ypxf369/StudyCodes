@@ -5,11 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="EntityConfigs\" />
+    <PackageReference Include="microsoft.entityframeworkcore" Version="2.1.2" />
+    <PackageReference Include="microsoft.entityframeworkcore.tools" Version="2.1.2" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="microsoft.entityframeworkcore" Version="2.1.2" />
+    <ProjectReference Include="..\TPSite.Tools\TPSite.Tools.csproj" />
   </ItemGroup>
 
 </Project>
