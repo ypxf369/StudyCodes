@@ -44,7 +44,6 @@ namespace TPSite
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
-            services.AddDbContext<EfCoreDbContext>();
             services.AddAuthorization();
             services.AddAuthentication(options =>
             {

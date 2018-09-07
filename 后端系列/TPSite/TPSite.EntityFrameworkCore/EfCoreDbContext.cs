@@ -17,6 +17,7 @@ namespace TPSite.EntityFrameworkCore
         {
             _configurationRoot = new ConfigurationBuilder().Add(new JsonConfigurationSource { Path = "appsettings.json", ReloadOnChange = true }).Build();
         }
+        public EfCoreDbContext(string name) { }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
@@ -33,7 +34,7 @@ namespace TPSite.EntityFrameworkCore
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.Load("TPSite.Domain"));
         }
 
-        public virtual DbSet<AuditLog> AuditLogs { get; set; }
+        public DbSet<AuditLog> AuditLogs { get; set; }
         public virtual DbSet<User> Users { get; set; }
     }
 }

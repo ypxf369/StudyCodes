@@ -26,7 +26,8 @@ namespace TPSite.Domain.EntityConfigs
             builder.Property(i => i.IsLocked).IsRequired();
             builder.Property(i => i.CreationTime);
             builder.Property(i => i.LastModificationTime);
-            builder.Property(i => i.DeletionTime);
+            builder.Property(i => i.CreatorUserId);
+            builder.Property(i => i.DeleterUserId);
         }
     }
 }

@@ -9,26 +9,23 @@
 <body>
     @*<partial name="_CookieConsentPartial" />*@
 
-    <div id="home">
+    <div id="home" v-cloak>
         <div id="header">
             <div id="loginDialog">
-                <el-button type="primary" @@click="loginDialogVisible = false">登 录</el-button>
-                <el-dialog title="收货地址" :visible.sync="loginDialogVisible">
-                    <el-form :model="form">
-                        <el-form-item label="活动名称" :label-width="formLabelWidth">
-                            <el-input v-model="form.name" auto-complete="off"></el-input>
+                <el-button type="primary" @@click="loginDialogVisible = true">登 录</el-button>
+                <el-dialog title="登录" :visible.sync="loginDialogVisible">
+                    <el-form :model="user" status-icon :rules="rules" ref="user" label-width="100px" class="demo-ruleForm">
+                        <el-form-item label="用户名" prop="name">
+                            <el-input type="text" v-model="user.name" auto-complete="off"></el-input>
                         </el-form-item>
-                        <el-form-item label="活动区域" :label-width="formLabelWidth">
-                            <el-select v-model="form.region" placeholder="请选择活动区域">
-                                <el-option label="区域一" value="shanghai"></el-option>
-                                <el-option label="区域二" value="beijing"></el-option>
-                            </el-select>
+                        <el-form-item label="密码" prop="password">
+                            <el-input type="password" v-model="user.password" auto-complete="off"></el-input>
+                        </el-form-item>
+                        <el-form-item>
+                            <el-button type="primary" @@click="submitLogin('user')">登录</el-button>
+                            <el-button @@click="resetForm('user')">重置</el-button>
                         </el-form-item>
                     </el-form>
-                    <div slot="footer" class="dialog-footer">
-                        <el-button @@click="loginDialogVisible = false">取 消</el-button>
-                        <el-button type="primary" @@click="loginDialogVisible = false">确 定</el-button>
-                    </div>
                 </el-dialog>
             </div>
         </div>
@@ -132,10 +129,68 @@
     <script type="text/javascript">
         var valid = new Vue({
             el: "#loginDialog",
-            data: {
-                loginDialogVisible:false
+            data() {
+                return {
+                    loginDialogVisible: false,
+                    user: {
+                        name: "",
+                        password: ""
+                    },
+                    rules: {
+                        name: [{ validator: (rule, value, callback) => {
+                            if (value === '') {
+                                callback(new Error('请输入用户名'));
+                            }
+                            callback();
+                        },trigger:'blur'}],
+                        password: [{ validator: (rule, value, callback) => {
+                                if (value === '') {
+                                    callback(new Error('请输入密码'));
+                            }
+                            callback();
+                            },trigger: 'blur' }
+                            //{ type: "string", required: true, message:'请输入密码', trigger: 'blur' }
+                        ]
+                    }
+                }
+            },
+            methods: {
+                submitLogin(user) {
+                    this.$refs[user].validate((valid) => {
+                        if (valid) {
+                            $.post('/Account/Login', {UserName:user.name,Password:user.password}, function(res) {
+                                
+                            },'json');
+                        } else {
+                            return false;
+                        }
+                    });
+                },
+                resetForm(user) {
+                    this.$refs[user].resetFields();
+                }
             }
         });
+        //var validatePassword = (rule, value, callback) => {
+        //    if (value === '') {
+        //        callback(new Error('请输入密码'));
+        //    } else {
+        //        if (this.user.password !== '') {
+        //            this.$refs.user.validateField('password');
+        //        }
+        //        callback();
+        //    }
+        //};
+        //function validatePassword(rule, value, callback){
+        //    if (value === '') {
+        //        callback(new Error('请输入密码'));
+        //    } else {
+        //        if (this.user.password !== '') {
+        //            this.$refs.user.validateField('password');
+        //        }
+        //        callback();
+        //    }
+        //};
     </script>
     <partial name="_KanbanNiang" />
     @RenderSection("Scripts", required: false)
