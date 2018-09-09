@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    *{
+        margin:0;
+        padding:0;
+    }
+    html,body{
+        margin:0 auto;
+        height:100%;
+    }
+    div{
+        border:2px solid black;
+    }
+    .div1{
+        height:400px;
+        width:400px;
+    }
+    .div2{
+        height:200px;
+        width:200px;
+        position:relative;
+        top:200px;
+        left:200px;
+        display:flex;
+        align-items: center;
+        justify-content:center;
+    }
+    #fixed{
+        position:fixed;
+        height:200px;
+        width:200px;
+        top:200px;
+        left:500px;
+    }
+    </style>
+</head>
+<body>
+    <div class="div1">
+        <div class="div2">
+            <span>
+                    relative
+            </span>
+        </div>
+        <div id="fixed">
+            fixed
+        </div>
+    </div>
+</body>
+</html>

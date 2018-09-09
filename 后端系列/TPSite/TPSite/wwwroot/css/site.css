@@ -1,0 +1,84 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+body, html {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    background: url('../images/bj.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.container {
+    height: 100%;
+    width: 96%;
+    margin: 0 auto;
+}
+
+.header, .footer {
+    width: 100%;
+}
+
+.header {
+    position: fixed;
+    width: 96%;
+    top: 0;
+    right: 2%;
+    left: 2%;
+    height: 50px;
+    border: 1px dashed #cccccc;
+    z-index: 99999;
+}
+
+.footer {
+    height: 50px;
+    border: 1px dashed #cccccc;
+}
+
+.mainContent {
+    margin-top: 50px;
+    height: 100%;
+    width: 100%;
+    display: flex;
+}
+
+.left {
+    width: 60%;
+    height: 100%;
+    flex: 3;
+    border: 1px dashed #cccccc;
+}
+
+.right {
+    width: 30%;
+    height: 100%;
+    margin-left: 20px;
+    border: 1px dashed #cccccc;
+    flex: 1;
+}
+
+.tip {
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    right: 4%;
+    top: 50px;
+}
+
+.sideBar {
+    height: 100%;
+    width: 300px;
+    float: right;
+}
+
+.clock {
+    margin: auto 5px 10px 50px;
+}

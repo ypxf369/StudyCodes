@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - TPSite</title>
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            height: 100%;
+            width: 100%;
+        }
+         .mainContent {
+             height: 100%;
+             width: 100%;
+         }
+    </style>
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/vue/vue.js"></script>
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+</head>
+<body>
+    <div class="container" v-cloak>
+        <div id="header">
+            
+        </div>
+        <div id="main" class="main">
+            <div class="mainContent">
+                @RenderBody()
+            </div>
+            
+        </div>
+        <hr />
+        <footer>
+            <p>&copy; 2018 - TPSite</p>
+        </footer>
+    </div>
+    
+    <partial name="_KanbanNiangPartial" />
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

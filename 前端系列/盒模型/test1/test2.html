@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        /* 清除浮动 */
+        .clearfix:after {
+            content: "";
+            height: 0;
+            clear: both;
+            display: block;
+            visibility: hidden;
+        }
+
+        .warp {
+            margin: 0 auto;
+            width: 960px;
+            height: 300px;
+        }
+
+        .left,
+        .right {
+            float: left;
+            height: 100%;
+        }
+
+        .left {
+            width: 200px;
+            background: magenta;
+            margin-right: 20px;
+        }
+
+        .right {
+            width: 720px;
+            background: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="warp clearfix">
+        <div class="left"></div>
+        <div class="right"></div>
+    </div>
+</body>
+
+</html>

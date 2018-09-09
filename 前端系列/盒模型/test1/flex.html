@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    *{
+        margin:0;
+        padding:0;
+    }
+    body,html{
+        height:100%;
+    }
+    #container{
+        display: flex;
+    }
+    div{
+        border:2px solid yellowgreen;
+    }
+    .initial{
+        flex:initial;
+        width:200px;
+        min-width: 100px;
+    }
+    .none{
+        flex:none;
+        width:200px;
+    }
+    .flex1{
+        flex:1;
+    }
+    .flex2{
+        flex:2;
+    }
+    #center{
+        display: flex;
+        height: 400px;
+        margin-top: 30px;
+        align-items: center;
+        justify-content: center;
+    }
+    #center div{
+
+    }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div class="initial">
+            无论窗口如何变化，如果有足够空间，我的宽度是200px，如果没有足够空间，
+            我的宽度是100px，但是不会再小了。
+        </div>
+        <div class="none">
+            无论窗口如何变化，我的宽度一直是固定的
+        </div>
+        <div class="flex1">
+            我会占满剩余的1/3
+        </div>
+        <div class="flex2">
+            我会占满剩余的2/3
+        </div>
+    </div>
+    <div id="center">
+            <div>
+                    CSS里总算是有了一种简单的垂直居中布局的方法了！
+            </div>
+        </div>
+</body>
+</html>

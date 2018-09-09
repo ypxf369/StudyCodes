@@ -9,7 +9,86 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>登录</title>
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
 </head>
 <body>
+    <div id="login">
+        <el-form :model="user" status-icon :rules="rules" ref="user" label-width="100px" class="demo-ruleForm">
+            <el-form-item label="用户名" prop="name">
+                <el-input type="text" v-model="user.name" auto-complete="off"></el-input>
+            </el-form-item>
+            <el-form-item label="密码" prop="password">
+                <el-input type="password" v-model="user.password" auto-complete="off"></el-input>
+            </el-form-item>
+            <el-form-item>
+                <el-button type="primary" @@click="submitLogin('user')">登录</el-button>
+                <el-button @@click="resetForm('user')">重置</el-button>
+            </el-form-item>
+        </el-form>
+    </div>
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/vue/vue.js"></script>
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <script src="~/js/site.js"></script>
+    <script type="text/javascript">
+        var valid = new Vue({
+            el: "#login",
+            data() {
+                return {
+                    user: {
+                        name: "",
+                        password: ""
+                    },
+                    rules: {
+                        name: [
+                            {
+                                validator: (rule, value, callback) => {
+                                    if (value === '') {
+                                        callback(new Error('请输入用户名'));
+                                    }
+                                    callback();
+                                },
+                                trigger: 'blur'
+                            }
+                        ],
+                        password: [
+                            {
+                                validator: (rule, value, callback) => {
+                                    if (value === '') {
+                                        callback(new Error('请输入密码'));
+                                    }
+                                    callback();
+                                },
+                                trigger: 'blur'
+                            }
+                            //{ type: "string", required: true, message:'请输入密码', trigger: 'blur' }
+                        ]
+                    }
+                };
+            },
+            methods: {
+                submitLogin(user) {
+                    this.$refs[user].validate((valid) => {
+                        if (valid) {
+                            var data = { UserName: this.user.name, Password: this.user.password, ReturnUrl: queryString("ReturnUrl") };
+                            $.post('/Account/Login', data, function (res) {
+                                if (res.statusCode == 200) {
+                                    window.location.href = res.data;
+                                } else {
+                                    alert(res.msg);
+                                    return;
+                                }
+                            }, 'json');
+                        } else {
+                            return false;
+                        }
+                    });
+                },
+                resetForm(user) {
+                    this.$refs[user].resetFields();
+                }
+            }
+        });
+    </script>
 </body>
 </html>

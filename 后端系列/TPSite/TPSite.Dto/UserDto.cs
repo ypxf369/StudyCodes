@@ -15,9 +15,9 @@ namespace TPSite.Dto
         public bool IsPhoneNumConfirmed { get; set; }
         public string Password { get; set; }
         public string Salt { get; set; }
-        public int? CreatorUserId { get; set; }
+        public Guid? CreatorUserId { get; set; }
         public UserDto CreatorUser { get; set; }
-        public int? DeleterUserId { get; set; }
+        public Guid? DeleterUserId { get; set; }
         public UserDto DeleterUser { get; set; }
         public bool IsLocked { get; set; } = false;
     }

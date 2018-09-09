@@ -9,6 +9,7 @@ using Autofac.Extensions.DependencyInjection;
 using log4net;
 using log4net.Config;
 using log4net.Repository;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -20,6 +21,7 @@ using TPSite.EntityFrameworkCore;
 using TPSite.Extras.AutoMapper.Startup;
 using TPSite.Interceptor;
 using TPSite.IService.Convention;
+using TPSite.SignalR;
 
 namespace TPSite
 {
@@ -44,11 +46,9 @@ namespace TPSite
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
-            services.AddAuthorization();
-            services.AddAuthentication(options =>
-            {
-                options.DefaultAuthenticateScheme = "CookieLoginScheme";
-            }).AddCookie(cookie =>
+            //services.AddAuthorization();
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie(cookie =>
             {
                 cookie.LoginPath = new PathString("/Account/Login");
                 cookie.ExpireTimeSpan = TimeSpan.FromMinutes(30);
@@ -59,6 +59,8 @@ namespace TPSite
                 options.Filters.Add<SystemExceptionFilter>();//添加异常过滤器
                 options.Filters.Add<AuditingFilter>();//审计日志过滤器
             }).SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            services.AddSignalR();
 
             var builder = new ContainerBuilder();//实例化Autofac容器
             builder.Populate(services);
@@ -99,6 +101,13 @@ namespace TPSite
             app.UseCookiePolicy();
 
             AutoMapperStartup.Register();//加载AutoMapper配置项
+
+            app.UseAuthentication();
+
+            app.UseSignalR(routes =>
+            {
+                routes.MapHub<ChatHub>("/chatHub");
+            });
 
             app.UseMvc(routes =>
             {

@@ -8,10 +8,9 @@ using Newtonsoft.Json;
 
 namespace TPSite.Extensions
 {
-    public static class JsonResultExtensions
+    public static class ControllerExtensions
     {
-        public static JsonResult MyJsonResult(this JsonResult jsonResult, HttpStatusCode statusCode, string msg,
-            object data = null)
+        public static JsonResult Json(this Controller controller, HttpStatusCode statusCode, string msg, object data = null)
         {
             var result = new AjaxResult { StatusCode = statusCode, Msg = msg, Data = data };
             var settings = new JsonSerializerSettings
@@ -24,23 +23,23 @@ namespace TPSite.Extensions
             };
             return new JsonResult(result, settings);
         }
+    }
 
-        public class AjaxResult
-        {
-            /// <summary>
-            /// 状态码
-            /// </summary>
-            public HttpStatusCode StatusCode { get; set; }
+    public class AjaxResult
+    {
+        /// <summary>
+        /// 状态码
+        /// </summary>
+        public HttpStatusCode StatusCode { get; set; }
 
-            /// <summary>
-            /// 消息
-            /// </summary>
-            public string Msg { get; set; }
+        /// <summary>
+        /// 消息
+        /// </summary>
+        public string Msg { get; set; }
 
-            /// <summary>
-            /// 执行返回的数据
-            /// </summary>
-            public object Data { get; set; }
-        }
+        /// <summary>
+        /// 执行返回的数据
+        /// </summary>
+        public object Data { get; set; }
     }
 }

@@ -24,8 +24,10 @@ namespace TPSite.Test
         {
             if (!optionsBuilder.IsConfigured)
             {
+                //optionsBuilder.UseSqlServer(
+                //    "Data Source=118.89.235.176;Initial Catalog=TPSite;User ID=sa;Password=123456");
                 optionsBuilder.UseSqlServer(
-                    "Data Source=118.89.235.176;Initial Catalog=TPSite;User ID=sa;Password=123.qweasdzxc");
+                    "Data Source=.;Initial Catalog=TPSite;User ID=sa;Password=123456");
             }
         }
     }

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            /* 让子元素的内容过多时撑不开父元素 */
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
+        body,
+        html {
+            height: 1000px;
+        }
+
+        #menu {
+            margin: 0 auto;
+            width: 980px;
+            display: flex;
+            /*当前块为弹性盒*/
+        }
+
+        #menu li {
+            flex: auto;
+            /*弹性盒中的单项*/
+            float: left;
+        }
+
+        #menu li a {
+            display: block;
+            height: 26px;
+            line-height: 26px;
+            border: 1px solid cornflowerblue;
+            margin-right: 2px;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        #main {
+            max-width: 100%;
+            margin: 0 auto;
+            background: cornflowerblue;
+        }
+        #relative{
+            position: relative;
+            top:20px;
+            left:20px;
+        }
+        #fixed{
+            position:fixed;
+            bottom:0;
+        }
+        #re_base{
+            border:1px solid red;
+            position: fixed;
+            width:100px;
+            height:100px;
+            right:20px;
+        }
+        #position{
+            border:1px solid rebeccapurple;
+            position:absolute;
+            width:100px;
+            height:100px;
+            top:20px;
+            left:20px;
+        }
+    </style>
+</head>
+
+<body>
+    <ul id="menu">
+        <li><a href="#" class="item">公司简介</a></li>
+        <li><a href="#" class="item">商品展示</a></li>
+        <li><a href="#" class="item">后台管理</a></li>
+        <li><a href="#" class="item">企业文化</a></li>
+        <li><a href="#" class="item">在线咨询</a></li>
+    </ul>
+    <div id="main">
+        test
+    </div>
+    <div id="relative">
+        relative
+    </div>
+    <div id="fixed">
+        fixed
+    </div>
+
+    <div id="re_base">
+        我是父元素
+        <div id="position">
+            我是子元素
+        </div>
+    </div>
+</body>
+
+</html>

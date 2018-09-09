@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        body, html{
+            height:2000px;
+        }
+        header{
+            position:fixed;
+            top:0;
+            width:100%;
+            height:50px;
+            background: yellowgreen;
+            z-index:99999;
+        }
+        footer{
+            position:fixed;
+            bottom:0;
+            width:100%;
+            height: 50px;
+            background:tomato;
+        }
+        #container{
+            margin-top: 50px;
+            height:400px;
+            width:98%;
+            border:2px solid green;
+            position:relative;
+        }
+        nav{
+            position: absolute;
+            left:0;
+            top:0;
+            width:50px;
+            height:200px;
+            border:2px solid rebeccapurple;
+            bottom:2px;
+            right:2px;
+        }
+        section{
+            position:absolute;
+            border:2px solid yellow;
+            margin-left:50px;
+            top:0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+     header
+    </header>
+    <div id="container">
+        <nav>
+            我是导航元素
+        </nav>
+        <section>
+            section1
+        </section>
+        <section>
+            section2section2section2section2section2section2section2section2section2se
+            ction2section2section2section2section2section2section2section2section2section2
+            section2section2section2section2section2section2section2section2section2sect
+            ion2section2section2section2section2section2section2section2section2sectio
+            n2section2section2section2section2section2section2section2section2section2
+            section2section2section2section2section2section2
+        </section>
+        <section>
+            section3
+        </section>
+    </div>
+    <footer>
+        footer
+    </footer>
+</body>
+</html>
