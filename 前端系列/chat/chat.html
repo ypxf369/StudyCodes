@@ -1,19 +1,19 @@
-﻿
-@{
-    Layout = null;
-}
-
 <!DOCTYPE html>
-
 <html>
 <head>
-    <meta name="viewport" content="width=device-width" />
-    <title>DoubleRoom</title>
-    <link href="~/css/chat.css" rel="stylesheet" />
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>会话_聊天机器人</title>
+    <!-- <link href="https://cdn.bootcss.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" type="text/css" /> -->
+    <link rel="stylesheet" href="chat.css">
+    <script src="jquery-2.2.0.min.js"></script>
+    <script src="chat.js"></script>
 </head>
 <body lang="zh">
-    <img class="abs cover body-bg" style="width:100%;height:100%" src="~/images/bg.jpeg">
-    <div id="app" v-cloak class="abs cover contaniner">
+    <img class="abs cover body-bg" style="width:100%;height:100%" src="bg.jpeg">
+    <div class="abs cover contaniner">
         <div class="abs cover pnl">
             <div class="top pnl-head"></div>
             <div class="abs cover pnl-body" id="pnlBody">
@@ -23,9 +23,8 @@
                         <div class="pnl-list" id="hists">
                             <!-- 历史消息 -->
                         </div>
-                        <div class="pnl-list" id="msgs" >
+                        <div class="pnl-list" id="msgs" onchange="this.scrollTop = this.scrollHeight"}">
                             <div class="msg robot">
-                                {{name}}
                                 <div class="msg-left" worker="小龙">
                                     <div class="msg-host photo" style="background-image: url('https://www.v5kf.com/files/icons/201610/14761555537.png');"></div>
                                     <div class="msg-ball" title="今天 17:52:06">你好，我是只能打字的聊天机器人                <br><br>您是想要了解哪些方面呢？</div>
@@ -52,41 +51,13 @@
                                 <img src="https://www.v5kf.com/files/icons/201610/14761555537.png" class="kh warn-btn" title="保存" id="emojiBtn" />
                             </div>
                         </div>
-                        @*<div class="abs top pnl-warn" id="pnlWarn">
-                                <div class="fl btns rel pnl-warn-free">
-                                    <i class="kh warn-btn emoji-btn" title="表情" id="emojiBtn"></i>
-                                    <i class="kh warn-btn menu-btn" title="菜单" id="menuBtn"></i>
-                                    <i class="kh warn-btn send-btn" style="display: none; color: rgb(41, 42, 42);" title="发送" id="sendBtn"></i>
-                                    <i class="kh warn-btn mute-btn" title="静音" id="muteBtn"></i>
-                                </div>
-                                <div class="fl btns rel pnl-warn-left" id="pnlBtns">
-                                    <div class="pnl-warn-btns">
-                                        <i class="kh warn-btn" title="常见问题" id="quesBtn"></i>
-                                        <i class="kh warn-btn" title="图片上传" id="uploadBtn"></i>
-                                        <i class="kh warn-btn" style="display:none;" title="视频" id="videoBtn"></i>
-                                        <i class="kh warn-btn" style="display:none;" title="语音" id="voiceBtn"></i>
-                                        <i class="kh warn-btn" style="display:none;" title="拍照上传" id="cameraBtn"></i>
-                                        <i class="kh warn-btn" title="截图提示" id="scrshot"></i>
-                                        <i class="kh warn-btn" title="评价" id="evalBtn"></i>
-                                        <i class="kh warn-btn" title="我要留言" id="msgBtn"></i>
-                                        <i class="kh warn-btn" title="提示音" id="voiceMbBtn"></i>
-                                        <i class="kh warn-btn" title="转人工" id="humanBtn"></i>
-                                    </div>
-                                    <div class="pnl-support-sm" id="copyrightSm"><a href="//www.v5kf.com">V5KF提供服务支持</a></div>
-                                </div>
-                                <div class="fl right pnl-warn-right">
-                                    <span class="sess-status" id="sessStatus"><!-- 机器人小五 <small>为您服务</small> --></span>
-                                    <!-- <i class="kh" kh-warn>&#xe80b;</i> --><span id="val-left" style="display:none;">您还可以输入<span id="valleft">450</span>字</span>
-                                </div>
-                            </div>*@
                         <div class="abs cover pnl-input">
-                            <textarea class="scroll" id="text" wrap="hard" v-model="textMsg" placeholder="在此输入文字信息..."></textarea>
+                            <textarea class="scroll" id="text" wrap="hard" placeholder="在此输入文字信息..."></textarea>
                             <div class="abs atcom-pnl scroll hide" id="atcomPnl">
                                 <ul class="atcom" id="atcom"></ul>
                             </div>
                         </div>
-                        @*<div class="abs br pnl-btn" id="submit" style="background-color: rgb(32, 196, 202); color: rgb(255, 255, 255);" onclick="SendMsg()">发送</div>*@
-                        <div class="abs br pnl-btn" id="submit" style="background-color: rgb(32, 196, 202); color: rgb(255, 255, 255);" @@click="send">发送</div>
+                        <div class="abs br pnl-btn" id="submit" style="background-color: rgb(32, 196, 202); color: rgb(255, 255, 255);" onclick="SendMsg()">发送</div>
                         <div class="pnl-support" id="copyright"><a href="#">yp提供技术支持</a></div>
                     </div>
                 </div>
@@ -107,8 +78,8 @@
                         </ul>
                         <ul class="indicator anim">
                             <li index="0" class="focus-item active"></li>
-                            <li index="1" class="focus-item"></li>
-                            <li index="2" class="focus-item"></li>
+                             <li index="1" class="focus-item"></li>
+                             <li index="2" class="focus-item"></li>
                         </ul>
                     </div>
                     <div class="pnl-right-content">
@@ -131,10 +102,5 @@
             </div>
         </div>
     </div>
-    <script src="~/lib/jquery/dist/jquery.js"></script>
-    <script src="~/lib/vue/vue.js"></script>
-    <script src="~/lib/signalr/signalr.js"></script>
-    <script src="~/js/chat.js"></script>
-    <partial name="_KanbanNiangPartial" />
 </body>
 </html>
