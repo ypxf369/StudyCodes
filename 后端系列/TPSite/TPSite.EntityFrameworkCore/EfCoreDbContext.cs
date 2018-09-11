@@ -36,5 +36,6 @@ namespace TPSite.EntityFrameworkCore
 
         public DbSet<AuditLog> AuditLogs { get; set; }
         public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<MessageRecord> MessageRecords { get; set; }
     }
 }
