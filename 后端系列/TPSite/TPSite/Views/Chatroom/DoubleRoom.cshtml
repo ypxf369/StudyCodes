@@ -1,4 +1,5 @@
-﻿
+﻿@using System.Security.Claims
+
 @{
     Layout = null;
 }
@@ -14,30 +15,48 @@
 <body lang="zh">
     <img class="abs cover body-bg" style="width:100%;height:100%" src="~/images/bg.jpeg">
     <div id="app" v-cloak class="abs cover contaniner">
+        @if (User.Identities.Any(i => i.IsAuthenticated))
+        {
+            <h1>
+                欢迎登录 @User.Identities.First(i => i.IsAuthenticated).FindFirst(ClaimTypes.Name).Value
+            </h1>
+        }
         <div class="abs cover pnl">
             <div class="top pnl-head"></div>
             <div class="abs cover pnl-body" id="pnlBody">
                 <div class="abs cover pnl-left">
+                    <!--广告条消息-->
+                    <div>
+                        <div class="msg-banner" :class="tipsHide" id="msgbanner">
+                            <div class="close" id="close">
+                                <i class="kh" @@click="closeTips">X</i>
+                            </div>
+                            <div id="banner">
+                                <strong>Tips：</strong> <span id="systemTips"></span>
+                            </div>
+                        </div>
+                    </div>
                     <div class="abs cover pnl-msgs scroll" id="show">
                         <div class="msg min time" id="histStart">加载历史消息</div>
                         <div class="pnl-list" id="hists">
                             <!-- 历史消息 -->
                         </div>
-                        <div class="pnl-list" id="msgs" >
-                            <div class="msg robot">
-                                {{name}}
+                        <div class="pnl-list" id="msgs">
+                            @*<div class="msg robot">
                                 <div class="msg-left" worker="小龙">
                                     <div class="msg-host photo" style="background-image: url('https://www.v5kf.com/files/icons/201610/14761555537.png');"></div>
-                                    <div class="msg-ball" title="今天 17:52:06">你好，我是只能打字的聊天机器人                <br><br>您是想要了解哪些方面呢？</div>
+                                    <div class="msg-ball" title="今天 17:52:06">
+                                        你好，我是只能打字的聊天机器人 <br><br>您是想要了解哪些方面呢？
+                                    </div>
                                 </div>
                             </div>
                             <div class="msg guest">
-                                <div class="msg-right">
+                                <div class="msg-right" worker="@User.Identities.First(i => i.IsAuthenticated).FindFirst(ClaimTypes.Name).Value">
                                     <div class="msg-host headDefault"></div>
                                     <div class="msg-ball" title="今天 17:52:06">你好</div>
                                     <div class="msg-host photo" style="background-image: url('https://www.v5kf.com/files/icons/201610/14761555537.png');"></div>
                                 </div>
-                            </div>
+                            </div>*@
                         </div>
                         <div class="pnl-list hide" id="unreadLine">
                             <div class="msg min time unread">未读消息</div>
@@ -53,32 +72,32 @@
                             </div>
                         </div>
                         @*<div class="abs top pnl-warn" id="pnlWarn">
-                                <div class="fl btns rel pnl-warn-free">
-                                    <i class="kh warn-btn emoji-btn" title="表情" id="emojiBtn"></i>
-                                    <i class="kh warn-btn menu-btn" title="菜单" id="menuBtn"></i>
-                                    <i class="kh warn-btn send-btn" style="display: none; color: rgb(41, 42, 42);" title="发送" id="sendBtn"></i>
-                                    <i class="kh warn-btn mute-btn" title="静音" id="muteBtn"></i>
+                            <div class="fl btns rel pnl-warn-free">
+                                <i class="kh warn-btn emoji-btn" title="表情" id="emojiBtn"></i>
+                                <i class="kh warn-btn menu-btn" title="菜单" id="menuBtn"></i>
+                                <i class="kh warn-btn send-btn" style="display: none; color: rgb(41, 42, 42);" title="发送" id="sendBtn"></i>
+                                <i class="kh warn-btn mute-btn" title="静音" id="muteBtn"></i>
+                            </div>
+                            <div class="fl btns rel pnl-warn-left" id="pnlBtns">
+                                <div class="pnl-warn-btns">
+                                    <i class="kh warn-btn" title="常见问题" id="quesBtn"></i>
+                                    <i class="kh warn-btn" title="图片上传" id="uploadBtn"></i>
+                                    <i class="kh warn-btn" style="display:none;" title="视频" id="videoBtn"></i>
+                                    <i class="kh warn-btn" style="display:none;" title="语音" id="voiceBtn"></i>
+                                    <i class="kh warn-btn" style="display:none;" title="拍照上传" id="cameraBtn"></i>
+                                    <i class="kh warn-btn" title="截图提示" id="scrshot"></i>
+                                    <i class="kh warn-btn" title="评价" id="evalBtn"></i>
+                                    <i class="kh warn-btn" title="我要留言" id="msgBtn"></i>
+                                    <i class="kh warn-btn" title="提示音" id="voiceMbBtn"></i>
+                                    <i class="kh warn-btn" title="转人工" id="humanBtn"></i>
                                 </div>
-                                <div class="fl btns rel pnl-warn-left" id="pnlBtns">
-                                    <div class="pnl-warn-btns">
-                                        <i class="kh warn-btn" title="常见问题" id="quesBtn"></i>
-                                        <i class="kh warn-btn" title="图片上传" id="uploadBtn"></i>
-                                        <i class="kh warn-btn" style="display:none;" title="视频" id="videoBtn"></i>
-                                        <i class="kh warn-btn" style="display:none;" title="语音" id="voiceBtn"></i>
-                                        <i class="kh warn-btn" style="display:none;" title="拍照上传" id="cameraBtn"></i>
-                                        <i class="kh warn-btn" title="截图提示" id="scrshot"></i>
-                                        <i class="kh warn-btn" title="评价" id="evalBtn"></i>
-                                        <i class="kh warn-btn" title="我要留言" id="msgBtn"></i>
-                                        <i class="kh warn-btn" title="提示音" id="voiceMbBtn"></i>
-                                        <i class="kh warn-btn" title="转人工" id="humanBtn"></i>
-                                    </div>
-                                    <div class="pnl-support-sm" id="copyrightSm"><a href="//www.v5kf.com">V5KF提供服务支持</a></div>
-                                </div>
-                                <div class="fl right pnl-warn-right">
-                                    <span class="sess-status" id="sessStatus"><!-- 机器人小五 <small>为您服务</small> --></span>
-                                    <!-- <i class="kh" kh-warn>&#xe80b;</i> --><span id="val-left" style="display:none;">您还可以输入<span id="valleft">450</span>字</span>
-                                </div>
-                            </div>*@
+                                <div class="pnl-support-sm" id="copyrightSm"><a href="//www.v5kf.com">V5KF提供服务支持</a></div>
+                            </div>
+                            <div class="fl right pnl-warn-right">
+                                <span class="sess-status" id="sessStatus"><!-- 机器人小五 <small>为您服务</small> --></span>
+                                <!-- <i class="kh" kh-warn>&#xe80b;</i> --><span id="val-left" style="display:none;">您还可以输入<span id="valleft">450</span>字</span>
+                            </div>
+                        </div>*@
                         <div class="abs cover pnl-input">
                             <textarea class="scroll" id="text" wrap="hard" v-model="textMsg" placeholder="在此输入文字信息..."></textarea>
                             <div class="abs atcom-pnl scroll hide" id="atcomPnl">
@@ -87,23 +106,24 @@
                         </div>
                         @*<div class="abs br pnl-btn" id="submit" style="background-color: rgb(32, 196, 202); color: rgb(255, 255, 255);" onclick="SendMsg()">发送</div>*@
                         <div class="abs br pnl-btn" id="submit" style="background-color: rgb(32, 196, 202); color: rgb(255, 255, 255);" @@click="send">发送</div>
-                        <div class="pnl-support" id="copyright"><a href="#">yp提供技术支持</a></div>
+                        <div class="pnl-support" id="copyright">
+                            <a href="#">yp提供技术支持</a>
+                        </div>
                     </div>
                 </div>
                 <div class="abs right pnl-right">
                     <!-- <div class="slider-container hide"></div> -->
                     <div class="slider-container">
-                        <ul class="slider anim" style="width: 1040px; left: -780px;">
-                            <a target="_blank" href="https://rs.v5kf.com/upload/10000/15152157973.png">
-                                <li index="0" class="slider-item" style="background-image: url(&quot;https://rs.v5kf.com/upload/10000/151522301410.png&quot;); width: 260px;"></li>
+                        <ul class="slider anim" style="width: 1040px; left: -260px;">
+                            <a href="#">
+                                <li index="0" class="slider-item" style="background-image: url(&quot;/images/bg.jpeg&quot;); width: 260px;"></li>
                             </a>
-                            <a target="_blank" href="https://www.v5kf.com/web/exp/wxpro.html">
-                                <li index="1" class="slider-item" style="background-image: url(&quot;https://rs.v5kf.com/upload/10000/15099584511.png&quot;); width: 260px;"></li>
+                            <a href="#">
+                                <li index="1" class="slider-item" style="background-image: url(&quot;/images/bg.jpeg&quot;); width: 260px;"></li>
                             </a>
-                            <a target="_blank" href="https://www.v5kf.com/web/help/detail.html?sid=10000&amp;tid=161">
-                                <li index="2" class="slider-item" style="background-image: url(&quot;https://rs.v5kf.com/upload/10000/15099584673.png&quot;); width: 260px;"></li>
+                            <a href="#"><li index="2" class="slider-item" style="background-image: url(&quot;/images/bg.jpeg&quot;); width: 260px;"></li>
                             </a>
-                            <li index="0" class="slider-item" style="background-image: url(&quot;https://rs.v5kf.com/upload/10000/151522301410.png&quot;); width: 260px;"></li>
+                            <li index="0" class="slider-item" style="background-image: url(&quot;/images/bg.jpeg&quot;); width: 260px;"></li>
                         </ul>
                         <ul class="indicator anim">
                             <li index="0" class="focus-item active"></li>
@@ -118,7 +138,7 @@
                         </div>
                         <div class="pnl-hot">
                             <ul class="rel-list unselect" id="hots">
-                                <!-- <li class="rel-item">这是一个问题，这是一个问题？</li> -->
+                                <!-- <li class="rel-item" title="点击发送问题">这是一个问题，这是一个问题？</li> -->
                             </ul>
                         </div>
                         <div class="pnl-rel" style="display: none;">

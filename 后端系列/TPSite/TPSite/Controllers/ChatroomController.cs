@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace TPSite.Controllers
 {
-    //[Authorize(AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme)]
+    [Authorize(AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme)]
     public class ChatroomController : Controller
     {
         public IActionResult DoubleRoom()

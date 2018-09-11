@@ -21,7 +21,7 @@
 }
 .waifu {
     position:fixed;
-    bottom:0;
+    bottom:-5px;
     right:0;
     z-index:999999;
     transition:all .3s ease-in-out;

@@ -1,5 +1,7 @@
-﻿<link href="~/live2d/flat-ui.min.css" rel="stylesheet" />
+﻿@using Microsoft.AspNetCore.Http.Extensions
+<link href="~/live2d/flat-ui.min.css" rel="stylesheet" />
 <link href="~/live2d/css.css" rel="stylesheet" />
+<input type="hidden" id="siteUrl" value="@Context.Request.Host.Value"/>
 <div class="waifu">
     <div class="waifu-tips"></div>
     <canvas id="live2d" width="280" height="250" class="live2d"></canvas>

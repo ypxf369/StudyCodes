@@ -42,7 +42,7 @@ $(document).on('copy', function (){
 //});
 
 $('.waifu-tool .fui-home').click(function () {
-    window.location = 'https://www.jysafe.cn/';
+    //window.location = 'https://www.jysafe.cn/';
 });
 
 $('.waifu-tool .fui-eye').click(function () {
@@ -60,7 +60,7 @@ $('.waifu-tool .fui-user').click(function () {
 });
 
 $('.waifu-tool .fui-info-circle').click(function () {
-    window.open('https://www.jysafe.cn/3054.air');
+    //window.open('https://www.jysafe.cn/3054.air');
 });
 
 $('.waifu-tool .fui-cross').click(function () {
@@ -197,7 +197,7 @@ function hideMessage(timeout){
 }
 
 function loadRandModel() {
-    loadlive2d("live2d", "http://localhost:5000/live2d/GetRand", console.log('live2d', '模型加载完成'));
+    loadlive2d("live2d", "http://"+$("#siteUrl").val()+"/live2d/GetRand", console.log('live2d', '模型加载完成'));
 
     //var model = modelArry[randNum(0, modelArry.length - 1)];
 }

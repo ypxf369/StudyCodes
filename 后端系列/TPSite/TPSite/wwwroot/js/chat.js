@@ -1,6 +1,6 @@
 ﻿var connection = new signalR.HubConnectionBuilder().withUrl("/chatHub").build();
-
-connection.on("ReceiveMessage", function (user, message) {
+var tipsHide = "";
+connection.on("User", function (user, message) {
     //var msg = message.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
     //var encodedMsg = user + " 说： " + msg + " " + getNowDate();
     //var li = document.createElement("li");
@@ -8,10 +8,16 @@ connection.on("ReceiveMessage", function (user, message) {
     //document.getElementById("messagesList").appendChild(li);
     //var div = document.getElementById("messageBody");
     //div.scrollTop = div.scrollHeight;
-    AddMsg('recive', SendMsgDispose(message));
+    AddMsg(user, SendMsgDispose(message));
     var div = document.getElementById("show");
     div.scrollTop = div.scrollHeight;
     _Notification(user, null);
+});
+connection.on("System", function (message) {
+    if (message != null && message != "") {
+        var msgs = document.getElementById("systemTips");
+        msgs.innerText = message;
+    }
 });
 
 connection.start().catch(function (err) {
@@ -20,8 +26,9 @@ connection.start().catch(function (err) {
 var vm = new Vue({
     el: "#app",
     data: {
-        userName:"yepeng",
-        textMsg: ""
+        userName: "yepeng",
+        textMsg: "",
+        tipsHide: tipsHide
     },
     created: function () {
         var self = this;
@@ -29,21 +36,26 @@ var vm = new Vue({
             var key = window.event.keyCode;
             if (key == 13) {
                 self.send();
+                e.returnValue = false;//取消键盘默认事件
             }
         };
     },
     methods: {
-        send: function () {
+        send() {
             var self = this;
-            if (self.textMsg == ""||self.textMsg==null) {
+            if (self.textMsg == "" || self.textMsg == null) {
                 alert("请输入消息");
                 return;
             }
-            connection.invoke("SendMessage", self.userName, self.textMsg).catch(function (err) {
+            connection.invoke("SendUserMessage", self.textMsg).catch(function (err) {
                 return console.error(err.toString());
             });
-            AddMsg('default', SendMsgDispose(text.value));
+            AddMsg('default', SendMsgDispose(self.textMsg));
             self.textMsg = "";
+        },
+        closeTips() {
+            var self = this;
+            self.tipsHide = "hide";
         }
     }
 });
