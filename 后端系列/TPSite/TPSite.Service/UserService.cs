@@ -57,23 +57,23 @@ namespace TPSite.Service
             return AnyAsync(i => i.Email == email);
         }
 
-        public async Task<LoginResults> CheckUserPasswordAsync(string userNameOrEmailOrPhone, string password)
+        public async Task<(LoginResults, UserDto)> CheckUserPasswordAsync(string userNameOrEmailOrPhone, string password)
         {
             var userDto = await GetUserByUserNameOrEmailOrMobileAsync(userNameOrEmailOrPhone);
             if (userDto != null)
             {
-                if (userDto.Password.Equals((password.ToMd5() + userDto.Salt).ToMd5(),StringComparison.OrdinalIgnoreCase))
+                if (userDto.Password.Equals((password.ToMd5() + userDto.Salt).ToMd5(), StringComparison.OrdinalIgnoreCase))
                 {
-                    return LoginResults.Success;
+                    return (LoginResults.Success, userDto);
                 }
                 else
                 {
-                    return LoginResults.PassWordError;
+                    return (LoginResults.PassWordError, null);
                 }
             }
             else
             {
-                return LoginResults.NotExist;
+                return (LoginResults.NotExist, null);
             }
         }
 

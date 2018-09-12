@@ -28,7 +28,12 @@ var vm = new Vue({
     data: {
         userName: "yepeng",
         textMsg: "",
-        tipsHide: tipsHide
+        tipsHide: tipsHide,
+        currentUserId: "",
+        pageIndex: 1,
+        pageSize: 20,
+        historyMsg: [],
+        isCanLoadhistoryMsg: true
     },
     created: function () {
         var self = this;
@@ -39,6 +44,8 @@ var vm = new Vue({
                 e.returnValue = false;//取消键盘默认事件
             }
         };
+        //获取最近的聊天记录
+        self.getHistoryMsg();
     },
     methods: {
         send() {
@@ -52,10 +59,31 @@ var vm = new Vue({
             });
             AddMsg('default', SendMsgDispose(self.textMsg));
             self.textMsg = "";
+            var div = document.getElementById("show");
+            div.scrollTop = div.scrollHeight;
         },
         closeTips() {
             var self = this;
             self.tipsHide = "hide";
+        },
+        getHistoryMsg() {
+            var self = this;
+            $.get('/Chatroom/GetHistoryMessage',
+                { pageIndex: self.pageIndex, pageSize: self.pageSize },
+                function (res) {
+                    if (res.statusCode == 200) {
+                        if (res.data.result.length == self.pageSize) { //或许还有下一页
+                            self.pageIndex++;
+                        } else {
+                            self.isCanLoadhistoryMsg = false;//没有下一页了
+                        }
+                        self.historyMsg = self.historyMsg.concat(res.data.result);
+                        self.currentUserId = res.data.currentUserId;
+                    } else {
+                        alert(res.msg);
+                        return;
+                    }
+                }, 'json');
         }
     }
 });

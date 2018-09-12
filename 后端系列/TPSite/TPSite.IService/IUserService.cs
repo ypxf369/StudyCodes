@@ -20,7 +20,7 @@ namespace TPSite.IService
         Task<bool> CheckUserNameDupAsync(string userName);
         Task<bool> CheckPhoneDupAsync(string mobile);
         Task<bool> CheckEmailDupAsync(string email);
-        Task<LoginResults> CheckUserPasswordAsync(string userNameOrEmailOrMobile, string password);
+        Task<(LoginResults, UserDto)> CheckUserPasswordAsync(string userNameOrEmailOrMobile, string password);
         Task<UserDto> GetUserByUserNameOrEmailOrMobileAsync(string userNameOrEmailOrPhone);
     }
 }

@@ -21,11 +21,11 @@ namespace TPSite.Service
                 .Include(i => i.ToUser);
         }
 
-        public async Task<IList<MessageRecordDto>> GetHistoryMessagePagedAsync(Guid fromUserId, Guid toUserId, int pageSize, int pageIndex)
+        public async Task<IList<MessageRecordDto>> GetHistoryMessagePagedAsync(Guid userId, int pageSize, int pageIndex)
         {
             var messages = await GetAll()
-                .Where(i => i.FromUserId == fromUserId && i.ToUserId == toUserId)
-                .OrderByDescending(i => i.CreationTime)
+                .Where(i => i.FromUserId == userId || i.ToUserId == userId)
+                .OrderBy(i => i.CreationTime)
                 .Skip((pageIndex - 1) * pageSize)
                 .Take(pageSize)
                 .ProjectTo<MessageRecordDto>()

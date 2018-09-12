@@ -42,12 +42,13 @@ namespace TPSite.Controllers
                 return this.Json(HttpStatusCode.BadRequest, "密码不能为空");
             }
             var result = await _userService.CheckUserPasswordAsync(model.UserName, model.Password);
-            if (result != LoginResults.Success)
+            if (result.Item1 != LoginResults.Success)
             {
                 return this.Json(HttpStatusCode.BadRequest, "用户名或密码错误");
             }
             var claims = new List<Claim>();
             claims.Add(new Claim(ClaimTypes.Name, model.UserName));
+            claims.Add(new Claim(ClaimTypes.Sid, result.Item2.Id.ToString()));
             var userIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
             var userPrincipal = new ClaimsPrincipal(userIdentity);
             await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, userPrincipal, new AuthenticationProperties

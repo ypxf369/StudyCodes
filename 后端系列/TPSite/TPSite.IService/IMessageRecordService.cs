@@ -11,6 +11,6 @@ namespace TPSite.IService
 {
     public interface IMessageRecordService : IEfCoreRepository<MessageRecord, MessageRecordDto, Guid>, IServiceSupport
     {
-        Task<IList<MessageRecordDto>> GetHistoryMessagePagedAsync(Guid fromUserId, Guid toUserId, int pageSize, int pageIndex);
+        Task<IList<MessageRecordDto>> GetHistoryMessagePagedAsync(Guid userId, int pageSize, int pageIndex);
     }
 }
