@@ -77,6 +77,7 @@ namespace TPSite.SignalR
         /// </summary>
         /// <param name="message"></param>
         /// <returns></returns>
+        [Authorize(AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme)]
         public async Task SendUserMessage(string message)
         {
             //var client = _onlineUsers.Where(x => x.Key == Context.ConnectionId).Select(x => x.Value).FirstOrDefault();
@@ -108,7 +109,8 @@ namespace TPSite.SignalR
             else
             {
                 var currentUserName = claimIdentity.FindFirst(ClaimTypes.Name).Value;
-                await Clients.Client(client.ConnectionId).SendAsync("User", currentUserName, message);
+                string targetAvatar = claimIdentity.FindFirst("TargetAvatar").Value;
+                await Clients.Client(client.ConnectionId).SendAsync("User", currentUserName, targetAvatar, message);
                 msgRcdDto.IsRead = true;
                 toUserId = OnlineUsers.First(i => i.Key != currentUserId).Value.UserId;
             }

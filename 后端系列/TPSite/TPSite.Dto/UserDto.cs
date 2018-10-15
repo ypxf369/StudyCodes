@@ -15,6 +15,7 @@ namespace TPSite.Dto
         public bool IsPhoneNumConfirmed { get; set; }
         public string Password { get; set; }
         public string Salt { get; set; }
+        public string Avatar { get; set; }
         public Guid? CreatorUserId { get; set; }
         public UserDto CreatorUser { get; set; }
         public Guid? DeleterUserId { get; set; }

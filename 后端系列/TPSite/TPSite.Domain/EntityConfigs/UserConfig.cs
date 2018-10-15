@@ -22,6 +22,7 @@ namespace TPSite.Domain.EntityConfigs
             builder.Property(i => i.IsPhoneNumConfirmed);
             builder.Property(i => i.Password).HasMaxLength(100).IsRequired();
             builder.Property(i => i.Salt).HasMaxLength(50).IsRequired();
+            builder.Property(i => i.Avatar).HasMaxLength(1024);
             builder.Property(i => i.IsDeleted).IsRequired();
             builder.Property(i => i.IsLocked).IsRequired();
             builder.Property(i => i.CreationTime);

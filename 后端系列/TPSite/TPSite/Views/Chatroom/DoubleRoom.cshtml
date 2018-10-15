@@ -42,7 +42,7 @@
                             <!-- 历史消息 -->
                             <div class="msg robot" v-if="item.fromUserId != currentUserId">
                                 <div class="msg-left" :worker="item.fromUser.userName">
-                                    <div class="msg-host photo" style="background-image: url('https://www.v5kf.com/files/icons/201610/14761555537.png');"></div>
+                                    <div class="msg-host photo" :style="{backgroundImage: 'url('+item.fromUser.avatar+')'}"></div>
                                     <div class="msg-ball" :title="item.creationTime">
                                         {{item.message}}
                                     </div>
@@ -52,7 +52,7 @@
                                 <div class="msg-right" :worker="item.fromUser.userName">
                                     <div class="msg-host headDefault"></div>
                                     <div class="msg-ball" :title="item.creationTime">{{item.message}}</div>
-                                    <div class="msg-host photo" style="background-image: url('https://www.v5kf.com/files/icons/201610/14761555537.png');"></div>
+                                    <div class="msg-host photo" :style="{backgroundImage: 'url('+item.fromUser.avatar+')'}"></div>
                                 </div>
                             </div>
                         </div>

@@ -15,6 +15,7 @@ namespace TPSite.Domain.Entities
         public bool IsPhoneNumConfirmed { get; set; } = false;
         public string Password { get; set; }
         public string Salt { get; set; }
+        public string Avatar { get; set; }
         public Guid? CreatorUserId { get; set; }
         public virtual User CreatorUser { get; set; }
         public Guid? DeleterUserId { get; set; }

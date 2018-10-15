@@ -25,7 +25,7 @@ namespace TPSite.Service
         {
             var messages = await GetAll()
                 .Where(i => i.FromUserId == userId || i.ToUserId == userId)
-                .OrderBy(i => i.CreationTime)
+                .OrderByDescending(i => i.CreationTime)
                 .Skip((pageIndex - 1) * pageSize)
                 .Take(pageSize)
                 .ProjectTo<MessageRecordDto>()

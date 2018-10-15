@@ -46,9 +46,16 @@ namespace TPSite.Controllers
             {
                 return this.Json(HttpStatusCode.BadRequest, "用户名或密码错误");
             }
+            //获取用户头像
+            var avatar = result.Item2.Avatar;
             var claims = new List<Claim>();
             claims.Add(new Claim(ClaimTypes.Name, model.UserName));
             claims.Add(new Claim(ClaimTypes.Sid, result.Item2.Id.ToString()));
+            //当前用户头像
+            claims.Add(new Claim("CurrentAvatar", avatar));
+            //对方用户头像
+            string targetAvatar = (await _userService.GetAsync(new Guid("82cac219-af9a-4901-ba4d-63b7ebcea529")))?.Avatar;
+            claims.Add(new Claim("TargetAvatar", targetAvatar));
             var userIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
             var userPrincipal = new ClaimsPrincipal(userIdentity);
             await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, userPrincipal, new AuthenticationProperties

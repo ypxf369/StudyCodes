@@ -1,6 +1,7 @@
 ﻿var connection = new signalR.HubConnectionBuilder().withUrl("/chatHub").build();
 var tipsHide = "";
-connection.on("User", function (user, message) {
+var targetAvatar = "";
+connection.on("User", function (user, targetAvatar,message) {
     //var msg = message.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
     //var encodedMsg = user + " 说： " + msg + " " + getNowDate();
     //var li = document.createElement("li");
@@ -8,7 +9,7 @@ connection.on("User", function (user, message) {
     //document.getElementById("messagesList").appendChild(li);
     //var div = document.getElementById("messageBody");
     //div.scrollTop = div.scrollHeight;
-    AddMsg(user, SendMsgDispose(message));
+    AddMsg(user, SendMsgDispose(message), null, targetAvatar);
     var div = document.getElementById("show");
     div.scrollTop = div.scrollHeight;
     _Notification(user, null);
@@ -30,6 +31,8 @@ var vm = new Vue({
         textMsg: "",
         tipsHide: tipsHide,
         currentUserId: "",
+        currentAvatar: "",
+        targetAvatar: "",
         pageIndex: 1,
         pageSize: 20,
         historyMsg: [],
@@ -46,6 +49,10 @@ var vm = new Vue({
         };
         //获取最近的聊天记录
         self.getHistoryMsg();
+        setTimeout(function() {
+            var div = document.getElementById("show");
+            div.scrollTop = div.scrollHeight;
+        },1000);
     },
     methods: {
         send() {
@@ -57,7 +64,7 @@ var vm = new Vue({
             connection.invoke("SendUserMessage", self.textMsg).catch(function (err) {
                 return console.error(err.toString());
             });
-            AddMsg('default', SendMsgDispose(self.textMsg));
+            AddMsg('default', SendMsgDispose(self.textMsg), self.currentAvatar, self.targetAvatar);
             self.textMsg = "";
             var div = document.getElementById("show");
             div.scrollTop = div.scrollHeight;
@@ -79,6 +86,8 @@ var vm = new Vue({
                         }
                         self.historyMsg = self.historyMsg.concat(res.data.result);
                         self.currentUserId = res.data.currentUserId;
+                        self.currentAvatar = res.data.avatar.currentAvatar;
+                        self.targetAvatar = res.data.avatar.targetAvatar;
                     } else {
                         alert(res.msg);
                         return;
@@ -91,13 +100,13 @@ var vm = new Vue({
 
 
 // 发送信息
-function SendMsg() {
+function SendMsg(currentAvatar, targetAvatar) {
     var text = document.getElementById("text");
     if (text.value == "" || text.value == null) {
         alert("发送信息为空，请输入！");
     }
     else {
-        AddMsg('default', SendMsgDispose(text.value));
+        AddMsg('default', SendMsgDispose(text.value), currentAvatar, targetAvatar);
         text.value = "";
     }
     var div = document.getElementById("show");
@@ -110,20 +119,30 @@ function SendMsgDispose(detail) {
 }
 
 // 增加信息
-function AddMsg(user, content) {
-    var str = CreadMsg(user, content);
+function AddMsg(user, content, currentAvatar, targetAvatar) {
+    var str = CreadMsg(user, content, currentAvatar, targetAvatar);
     var msgs = document.getElementById("msgs");
     msgs.innerHTML = msgs.innerHTML + str;
 }
 
 // 生成内容
-function CreadMsg(user, content) {
+function CreadMsg(user, content, currentAvatar, targetAvatar) {
+    var avatarUrl = "https://www.v5kf.com/files/icons/201610/14761555537.png";
+    if (currentAvatar == null || currentAvatar == '') {
+        currentAvatar = avatarUrl;
+    }
+    if (targetAvatar == null || targetAvatar == '') {
+        targetAvatar = avatarUrl;
+    }
     var str = "";
     if (user == 'default') {
-        str = "<div class=\"msg guest\"><div class=\"msg-right\"><div class=\"msg-host headDefault\"></div><div class=\"msg-ball\" title=\"今天 17:52:06\">" + content + "</div><div class=\"msg-host photo\" style=\"background-image: url('https://www.v5kf.com/files/icons/201610/14761555537.png');\"></div></div></div>"
+        str =
+            "<div class=\"msg guest\"><div class=\"msg-right\"><div class=\"msg-host headDefault\"></div><div class=\"msg-ball\" title=\"今天 17:52:06\">" +
+            content +
+            "</div><div class=\"msg-host photo\" style=\"background-image: url('" + currentAvatar + "');\"></div></div></div>";
     }
     else {
-        str = "<div class=\"msg robot\"><div class=\"msg-left\" worker=\"" + user + "\"><div class=\"msg-host photo\" style=\"background-image: url('https://www.v5kf.com/files/icons/201610/14761555537.png')\"></div><div class=\"msg-ball\" title=\"今天 17:52:06\">" + content + "</div></div></div>";
+        str = "<div class=\"msg robot\"><div class=\"msg-left\" worker=\"" + user + "\"><div class=\"msg-host photo\" style=\"background-image: url('" + targetAvatar + "')\"></div><div class=\"msg-ball\" title=\"今天 17:52:06\">" + targetAvatar + "</div></div></div>";
     }
     return str;
 }
