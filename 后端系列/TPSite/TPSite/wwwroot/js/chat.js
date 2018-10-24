@@ -142,7 +142,7 @@ function CreadMsg(user, content, currentAvatar, targetAvatar) {
             "</div><div class=\"msg-host photo\" style=\"background-image: url('" + currentAvatar + "');\"></div></div></div>";
     }
     else {
-        str = "<div class=\"msg robot\"><div class=\"msg-left\" worker=\"" + user + "\"><div class=\"msg-host photo\" style=\"background-image: url('" + targetAvatar + "')\"></div><div class=\"msg-ball\" title=\"今天 17:52:06\">" + targetAvatar + "</div></div></div>";
+        str = "<div class=\"msg robot\"><div class=\"msg-left\" worker=\"" + user + "\"><div class=\"msg-host photo\" style=\"background-image: url('" + targetAvatar + "')\"></div><div class=\"msg-ball\" title=\"今天 17:52:06\">" + content + "</div></div></div>";
     }
     return str;
 }
