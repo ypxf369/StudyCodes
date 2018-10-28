@@ -1,51 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <style>
-    *{
-        margin:0;
-        padding:0;
-    }
-    body,html{
-        height:100%;
-    }
-    #container{
-        display: flex;
-    }
-    div{
-        border:2px solid yellowgreen;
-    }
-    .initial{
-        flex:initial;
-        width:200px;
-        min-width: 100px;
-    }
-    .none{
-        flex:none;
-        width:200px;
-    }
-    .flex1{
-        flex:1;
-    }
-    .flex2{
-        flex:2;
-    }
-    #center{
-        display: flex;
-        height: 400px;
-        margin-top: 30px;
-        align-items: center;
-        justify-content: center;
-    }
-    #center div{
+        * {
+            margin: 0;
+            padding: 0;
+        }
 
-    }
+        body,
+        html {
+            height: 100%;
+        }
+
+        #container {
+            display: flex;
+        }
+
+        div {
+            border: 2px solid yellowgreen;
+        }
+
+        .initial {
+            flex: initial;
+            width: 200px;
+            min-width: 100px;
+        }
+
+        .none {
+            flex: none;
+            width: 200px;
+        }
+
+        .flex1 {
+            flex: 1;
+        }
+
+        .flex2 {
+            flex: 2;
+        }
+
+        #center {
+            display: flex;
+            height: 400px;
+            margin-top: 30px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #center div {}
     </style>
 </head>
+
 <body>
     <div id="container">
         <div class="initial">
@@ -63,9 +73,10 @@
         </div>
     </div>
     <div id="center">
-            <div>
-                    CSS里总算是有了一种简单的垂直居中布局的方法了！
-            </div>
+        <div>
+            CSS里总算是有了一种简单的垂直居中布局的方法了！
         </div>
+    </div>
 </body>
+
 </html>
