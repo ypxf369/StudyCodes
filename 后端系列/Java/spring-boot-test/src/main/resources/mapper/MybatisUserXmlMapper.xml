@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yepeng.spring.boot.test.service.mapper.MybatisUserXmlMapper">
+    <insert id="createUser">
+        insert into t_user(name,password) values (#{name},MD5(#{password}))
+    </insert>
+    <select id="getUserById" resultType="com.yepeng.spring.boot.test.entity.User">
+        select * from t_user where id=#{id}
+    </select>
+    <update id="updateUserById">
+        update t_user set name=#{name} where id=#{id}
+    </update>
+    <delete id="deleteUserById">
+        delete from t_user where id=#{id}
+    </delete>
+</mapper>
