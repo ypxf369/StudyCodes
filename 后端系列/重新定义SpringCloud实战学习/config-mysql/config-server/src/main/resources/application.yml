@@ -1,0 +1,27 @@
+server:
+  port: 9090
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        jdbc:
+          sql: select key,value from properties where application =? and profile =? and lable =?
+      label:master
+    refresh:
+      extra-refreshable: none # 解决DataSource循环依赖问题
+  profiles:
+    active: jdbc
+
+  ## 数据配置
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/spring-cloud?useUnicode=true&characterEncoding=UTF-8
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.jdbc.Driver
+
+logging:
+  level:
+    org.springframework.jdbc.core: debug
+    org.springframework.jdbc.core.StatementCreatorUtils: trace
