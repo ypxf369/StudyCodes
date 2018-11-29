@@ -7,19 +7,21 @@ spring:
     config:
       server:
         jdbc:
-          sql: select key,value from properties where application =? and profile =? and lable =?
-      label:master
+          sql: select `key`,`value` from properties where application =? and `profile` =? and lable =?
+      label: master
     refresh:
       extra-refreshable: none # 解决DataSource循环依赖问题
   profiles:
     active: jdbc
-
   ## 数据配置
   datasource:
-    url: jdbc:mysql://127.0.0.1:3306/spring-cloud?useUnicode=true&characterEncoding=UTF-8
+    url: jdbc:mysql://127.0.0.1:3306/spring-cloud?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC&useSSL=true
     username: root
     password: 123456
     driver-class-name: com.mysql.jdbc.Driver
+
+  main:
+    allow-bean-definition-overriding: true
 
 logging:
   level:
