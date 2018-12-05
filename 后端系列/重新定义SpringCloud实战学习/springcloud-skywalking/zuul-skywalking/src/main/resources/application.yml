@@ -1,0 +1,44 @@
+spring:
+  application:
+    name: zuul-skywalking
+  main:
+    allow-bean-definition-overriding: true
+
+server:
+  port: 9020
+
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:8761/eureka/
+
+zuul:
+  routes:
+    service-a:
+      path: /client/**
+      serviceId: service-a
+
+ribbon:
+  eureka:
+    enabled: true
+  ReadTimeout: 30000
+  ConnectTimeout: 30000
+  MaxAutoRetries: 0
+  MaxAutoRetriesNextServer: 1
+  OkToRetryOnAllOperations: false
+
+
+hystrix:
+  threadpool:
+    default:
+      coreSize: 1000
+      maxQueueSize: 1000
+      queueSizeRejectionThreshold: 500
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 120001
+
