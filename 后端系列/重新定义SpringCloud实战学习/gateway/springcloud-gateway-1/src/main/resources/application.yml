@@ -1,0 +1,35 @@
+spring:
+  cloud:
+    gateway:
+      routes: # 当访问http://localhost:8080/jd直转发阿道京东商城首页
+      - id: jd_route
+        uri: http://jd.com:80/
+        predicates:
+        - Path=/jd
+      - id: api_test
+        uri: http://localhost:8090/test
+        predicates:
+        - Path=/api/**
+        filters:
+        - StripPrefix=1
+  application:
+    name: spring-cloud-gateway
+
+server:
+  port: 8080
+
+
+logging: ## Spring Cloud Gateway的日志配置
+  level:
+    org.springframework.cloud.gateway: trace
+    org.springframework.http.server.reactive: debug
+    org.springframework.web.reactive: debug
+    reactor.ipc.netty: debug
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  security:
+    enabled: false
