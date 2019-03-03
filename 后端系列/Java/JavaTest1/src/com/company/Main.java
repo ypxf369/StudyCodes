@@ -7,8 +7,9 @@ public class Main {
     public static void main(String[] args) {
         //method();
         //method2();
-        MyThread2 thread2 = new MyThread2();
-        new Thread(thread2).start();
+        //MyThread2 thread2 = new MyThread2();
+        //new Thread(thread2).start();
+        System.out.println(getNum());
     }
 
     private static void method2() {
@@ -28,5 +29,23 @@ public class Main {
         System.out.println("给定值在数组中的索引为：" + index);
     }
 
+    /**
+     * 快速找出一个数组中的两个数字，让这两个数字之和等于一个给定的值
+     */
+    private static String getNum() {
+        int sum = 3;
+        int[] arr = {3, 5, 6, 7, 12, 20, 32};
+        int i, j;
+        for (i = 0, j = arr.length - 1; i < j; ) {
+            if ((arr[i] + arr[j]) == sum) {
+                break;
+            } else if ((arr[i] + arr[j]) < sum) {
+                i++;
+            } else {
+                j--;
+            }
+        }
+        return arr[i] + "," + arr[j];
+    }
 }
 

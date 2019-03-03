@@ -48,7 +48,7 @@ public class StackQueueTest {
             }
         }
 
-        public void enqueue(MyNode value) {
+        public void enqueue(final MyNode value) {
             if (value != null) {
                 if (first == null) {
                     first = value;
