@@ -2,6 +2,7 @@ package com.company;
 
 import javax.lang.model.element.VariableElement;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Main {
     public static void main(String[] args) {
@@ -9,7 +10,19 @@ public class Main {
         //method2();
         //MyThread2 thread2 = new MyThread2();
         //new Thread(thread2).start();
-        System.out.println(getNum());
+//        String a="123";
+//        String b="123";
+//        System.out.println(a==b);
+        //System.out.println(getNum());
+
+        HashMap<Integer,Integer> map=new HashMap<>();
+        map.put(1, 1);
+        map.put(2, 2);
+        for(Integer key:map.keySet()){
+            if(key.equals(1)){
+                map.remove(1);
+            }
+        }
     }
 
     private static void method2() {
