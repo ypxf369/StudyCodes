@@ -51,11 +51,16 @@ public class MyLock implements Lock {
             int state = getState();
             if (state == 0) {//代表锁没有被线程独占
                 // 利用CAS修改状态
-                if(compareAndSetState(state, arg)){
+                if (compareAndSetState(state, arg)) {
                     // 让当前线程以独占的方式占有锁
                     setExclusiveOwnerThread(Thread.currentThread());
                     return true;
                 }
+            } else if (getExclusiveOwnerThread() == Thread.currentThread()) {
+                // 如果当前占有锁的线程是当前线程，那么当前线程就不需要再次获取锁了。（可重入锁）
+                // 同一个锁对同一资源进行占有的时候，直接分配给这个线程
+                setState(state+arg);
+                return true;
             }
             return false;
         }
@@ -73,6 +78,8 @@ public class MyLock implements Lock {
                 setState(state);
                 return true;
             }
+            // 释放重入锁
+            setState(state);
             return false;
         }
 
