@@ -23,6 +23,9 @@ public class Test {
 
         UserDao userDao1 = (UserDao) DynamicProxy.newInstance(new UserDaoImpl());
         userDao1.getUser();
+        System.out.println(userDao1.getUser(23));
+        
+        Proxy.newProxyInstance(, , )
 
     }
 }

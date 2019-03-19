@@ -62,9 +62,10 @@ public class DynamicProxy {
             for (int i = 0; i < paramStr.length; i++) {
                 Parameter p = parameters[i];
                 paramStr[i] = p.getType().getName() + " " + p.getName();
+                paramValue[i] = p.getName();
             }
 
-            sb.append("@Override public ").append(method.getReturnType()).append(" ").append(method.getName()).append("(").append(String.join(",", paramStr)).append("){");
+            sb.append("@Override public ").append(method.getReturnType().getName()).append(" ").append(method.getName()).append("(").append(String.join(",", paramStr)).append("){");
             if (!method.getReturnType().getSimpleName().equals("void")) {
                 sb.append("return ");
             }

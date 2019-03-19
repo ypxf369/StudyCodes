@@ -5,4 +5,6 @@ package com.company.proxy.staticProxy;
  */
 public interface UserDao {
     void getUser();
+
+    String getUser(int id);
 }

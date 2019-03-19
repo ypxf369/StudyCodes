@@ -17,4 +17,9 @@ public class UserDaoPowerProxy implements UserDao {
         userDao.getUser();
         System.out.println("用户查询完成");
     }
+
+    @Override
+    public String getUser(int id) {
+        return null;
+    }
 }
