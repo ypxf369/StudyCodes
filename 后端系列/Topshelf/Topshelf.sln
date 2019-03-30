@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Topshelf_Core_Quartz", "Top
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Topshelf_Framework_Exe", "Topshelf_Framework_Exe\Topshelf_Framework_Exe.csproj", "{CA687570-27E5-4360-9FB8-AFF331CDC06F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Topshelf_WindowsUpdateWatch", "Topshelf_WindowsUpdateWatch\Topshelf_WindowsUpdateWatch.csproj", "{1D2448FB-7C74-471A-8B21-8095FFD3B486}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{CA687570-27E5-4360-9FB8-AFF331CDC06F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CA687570-27E5-4360-9FB8-AFF331CDC06F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CA687570-27E5-4360-9FB8-AFF331CDC06F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D2448FB-7C74-471A-8B21-8095FFD3B486}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D2448FB-7C74-471A-8B21-8095FFD3B486}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D2448FB-7C74-471A-8B21-8095FFD3B486}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D2448FB-7C74-471A-8B21-8095FFD3B486}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
