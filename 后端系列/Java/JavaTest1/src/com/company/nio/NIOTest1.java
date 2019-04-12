@@ -9,7 +9,7 @@ import java.nio.charset.Charset;
 /**
  * Created by yepeng on 2019/02/26.
  */
-public class NIOTest {
+public class NIOTest1 {
     private Charset charset = Charset.forName("UTF-8");
 
     private SocketChannel channel;
@@ -53,6 +53,6 @@ public class NIOTest {
     }
 
     public static void main(String[] args) {
-        new NIOTest().readHtmlContent();
+        new NIOTest1().readHtmlContent();
     }
 }

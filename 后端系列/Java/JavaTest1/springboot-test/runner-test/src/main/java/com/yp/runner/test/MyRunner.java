@@ -20,23 +20,23 @@ public class MyRunner implements ApplicationRunner {
 
     @Bean //第三种方法
     @Order(222)
-    public CommandLineRunner init(){
-        return (String... args)->{
-          System.out.println("third way... 2");
+    public CommandLineRunner init() {
+        return (String... args) -> {
+            System.out.println("third way... 2");
         };
     }
-    
+
     @Bean
     @Order(3333)
-    public ApplicationRunner init2(){
-        return (ApplicationArguments args)->{
+    public ApplicationRunner init2() {
+        return (ApplicationArguments args) -> {
             System.out.println("fourth way... 3");
         };
     }
 
     @Component //第二种方法
     @Order(444)
-    class MyRunnerCommandLine implements CommandLineRunner{
+    class MyRunnerCommandLine implements CommandLineRunner {
 
         @Override
         public void run(String... args) throws Exception {
