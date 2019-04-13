@@ -1,10 +1,10 @@
-package com.yp.server1.netty;
+package com.yp.server2.netty;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import com.yp.server1.myTransaction.transactional.MyTransaction;
-import com.yp.server1.myTransaction.transactional.MyTransactionManager;
-import com.yp.server1.myTransaction.transactional.TransactionType;
+import com.yp.server2.myTransaction.transactional.MyTransaction;
+import com.yp.server2.myTransaction.transactional.MyTransactionManager;
+import com.yp.server2.myTransaction.transactional.TransactionType;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 import org.springframework.stereotype.Component;

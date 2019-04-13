@@ -46,7 +46,7 @@ public class NettyServerHandler extends ChannelInboundHandlerAdapter {
      */
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
-        System.out.println("接受数据:" + msg.toString());
+        System.out.println("server接受数据:" + msg.toString());
 
         JSONObject jsonObject = JSON.parseObject((String) msg);
 

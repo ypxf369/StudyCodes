@@ -1,18 +1,16 @@
-package com.yp.server1.myTransaction.aspect;
+package com.yp.server2.myTransaction.aspect;
 
-import com.yp.server1.myTransaction.annotation.MyTransactional;
-import com.yp.server1.myTransaction.transactional.MyTransaction;
-import com.yp.server1.myTransaction.transactional.MyTransactionManager;
-import com.yp.server1.myTransaction.transactional.TransactionType;
+import com.yp.server2.myTransaction.annotation.MyTransactional;
+import com.yp.server2.myTransaction.transactional.MyTransaction;
+import com.yp.server2.myTransaction.transactional.MyTransactionManager;
+import com.yp.server2.myTransaction.transactional.TransactionType;
 import org.aspectj.lang.ProceedingJoinPoint;
-import org.aspectj.lang.Signature;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.core.Ordered;
 import org.springframework.stereotype.Component;
 
-import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
 
 /**
@@ -21,7 +19,7 @@ import java.lang.reflect.Method;
 @Aspect
 @Component
 public class MyTransactionalAspect implements Ordered {
-    @Around("@annotation(com.yp.server1.myTransaction.annotation.MyTransactional)")
+    @Around("@annotation(com.yp.server2.myTransaction.annotation.MyTransactional)")
     public void around(ProceedingJoinPoint joinPoint) {
         MethodSignature signature = (MethodSignature) joinPoint.getSignature();
         Method method = signature.getMethod();

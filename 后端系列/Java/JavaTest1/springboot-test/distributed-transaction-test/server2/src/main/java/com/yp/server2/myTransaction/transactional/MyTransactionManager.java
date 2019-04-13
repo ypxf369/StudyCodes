@@ -1,7 +1,7 @@
-package com.yp.server1.myTransaction.transactional;
+package com.yp.server2.myTransaction.transactional;
 
 import com.alibaba.fastjson.JSONObject;
-import com.yp.server1.netty.NettyClient;
+import com.yp.server2.netty.NettyClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -51,6 +51,7 @@ public class MyTransactionManager {
         }else{
             transactionMap.get(groupId).add(myTransaction);
         }
+
         current.set(myTransaction);
         TMAP.put(groupId, myTransaction);
         return myTransaction;
