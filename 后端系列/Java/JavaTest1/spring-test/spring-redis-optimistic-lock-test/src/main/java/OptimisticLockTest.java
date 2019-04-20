@@ -43,7 +43,7 @@ public class OptimisticLockTest {
      */
     public static void initClient() {
         ExecutorService executorService = Executors.newCachedThreadPool();
-        int clientNum = 100; //模拟客户数目
+        int clientNum = 20; //模拟客户数目
         for (int i = 0; i < clientNum; i++) {
             executorService.execute(new ClientThread(i));
         }
@@ -96,6 +96,7 @@ class ClientThread implements Runnable {
 
     public ClientThread(int num) {
         clientName = "编号=" + num;
+        jedis = RedisUtil.getInstance().getJedis();
     }
 
     public void run() {
@@ -107,7 +108,7 @@ class ClientThread implements Runnable {
 
         while (true) {
             System.out.println("顾客：" + clientName + "开始抢购商品");
-            jedis = RedisUtil.getInstance().getJedis();
+
             try {
                 jedis.watch(key);
                 int prdNum = Integer.parseInt(jedis.get(key));// 当前商品个数
@@ -124,6 +125,8 @@ class ClientThread implements Runnable {
                         System.out.println("恭喜顾客" + clientName + "抢到了商品");
                         break;
                     }
+                } else {
+                    break;
                 }
             } catch (Exception e) {
                 e.printStackTrace();

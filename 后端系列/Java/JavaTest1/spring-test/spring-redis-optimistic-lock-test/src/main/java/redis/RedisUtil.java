@@ -1819,13 +1819,13 @@ public class RedisUtil {
 
     public static void returnResource(JedisPool pool, Jedis jedis) {
         if (jedis != null) {
-            pool.close();
+
         }
     }
 
     public static void returnResource(Jedis jedis) {
         if (jedis != null) {
-            pool.close();
+
         }
     }
 }
