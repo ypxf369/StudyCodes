@@ -15,7 +15,7 @@ namespace Topshelf_WindowsUpdateWatch
         {
             _timer = new Timer
             {
-                //设置时间间隔
+                //设置时间间隔(ms)
                 Interval = 1800000,
                 //设置单次执行（false）还是一直执行（true）
                 AutoReset = true
@@ -23,9 +23,9 @@ namespace Topshelf_WindowsUpdateWatch
         }
         public bool Start(HostControl hostControl)
         {
-            ////设置是否绑定事件
+            //设置是否绑定事件
             _timer.Enabled = true;
-            ////绑定事件
+            //绑定事件
             _timer.Elapsed += DoWork;
             return true;
         }
@@ -46,6 +46,15 @@ namespace Topshelf_WindowsUpdateWatch
         private void DoWork(object sender, ElapsedEventArgs e)
         {
             DeleteFiles(BasePath);
+            TimeSpan now = DateTime.Now.TimeOfDay;
+            if (now >= TimeSpan.FromHours(21) || now < TimeSpan.FromHours(8))
+            {
+                _timer.Interval = 300000;
+            }
+            else
+            {
+                _timer.Interval = 1800000;
+            }
         }
 
         private static void DeleteFiles(string path)
